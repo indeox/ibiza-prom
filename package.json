@@ -1,0 +1,151 @@
+{
+  "name": "ibiza-prom",
+  "version": "1.0.0",
+  "description": "Replay of the BBC Radio1 Ibiza Prom",
+  "config": {
+    "buildDir": "./build",
+    "buildDirTests": "./build_tests",
+    "devHost": "localhost",
+    "devPort": 8000
+  },
+  "scripts": {
+    "build": "NODE_ENV=production npm run webpack",
+    "clean": "rimraf $npm_package_config_buildDir && mkdir $npm_package_config_buildDir",
+    "env": "env",
+    "lint": "eslint --ext .js --ext .jsx ./app ./webpack && echo No linting errors.",
+    "prebuild": "npm run clean",
+    "prestart": "npm install",
+    "pretest": "npm install && npm run lint",
+    "pretest-travis": "npm install && npm run lint",
+    "start": "NODE_ENV=development node dev-server ./webpack/config",
+    "test": "NODE_ENV=test karma start",
+    "test-travis": "NODE_ENV=test karma start --single-run",
+    "webpack": "webpack --colors --progress --config ./webpack/config",
+    "deploy": "npm run build && node ./tasks/deploy.js"
+  },
+  "dependencies": {
+    "chart.js": "^1.0.2",
+    "chroma-js": "^1.1.1",
+    "classnames": "^2.1.5",
+    "color-scheme": "0.0.5",
+    "flux": "^2.1.1",
+    "lodash": "^3.10.1",
+    "moment": "^2.10.6",
+    "normalize.css": "^3.0.3",
+    "pleasejs": "^0.4.2",
+    "r-dom": "^1.3.0",
+    "react": "^0.13.3",
+    "react-chartjs": "^0.6.0",
+    "react-micro-bar-chart": "^0.4.1",
+    "react-sparklines": "^1.2.2",
+    "superagent": "^1.4.0",
+    "timeout-transition-group": "^1.0.3",
+    "tinycolor": "0.0.1",
+    "tinycolor2": "^1.1.2"
+  },
+  "devDependencies": {
+    "autoprefixer-core": "^6.0.1",
+    "babel-core": "^5.8.25",
+    "babel-eslint": "^4.1.3",
+    "babel-loader": "^5.3.2",
+    "babel-plugin-rewire": "^0.1.22",
+    "babel-runtime": "^5.8.25",
+    "bundle-loader": "^0.5.4",
+    "chai": "^3.3.0",
+    "compression-webpack-plugin": "^0.2.0",
+    "css-loader": "^0.19.0",
+    "eslint": "^1.5.1",
+    "eslint-plugin-react": "^3.5.1",
+    "extract-text-webpack-plugin": "^0.8.2",
+    "file-loader": "^0.8.4",
+    "glob": "^5.0.15",
+    "html-loader": "^0.3.0",
+    "json-loader": "^0.5.3",
+    "karma": "^0.13.10",
+    "karma-chrome-launcher": "^0.2.0",
+    "karma-cli": "0.1.1",
+    "karma-mocha": "^0.2.0",
+    "karma-mocha-reporter": "^1.1.1",
+    "karma-phantomjs-launcher": "^0.2.1",
+    "karma-sinon": "^1.0.4",
+    "karma-source-map-support": "^1.1.0",
+    "karma-sourcemap-loader": "^0.3.5",
+    "karma-webpack": "^1.7.0",
+    "lodash": "^3.10.1",
+    "mocha": "^2.3.3",
+    "mocha-loader": "^0.7.1",
+    "node-libs-browser": "^0.5.3",
+    "node-sass": "^3.3.3",
+    "opn": "^3.0.2",
+    "phantomjs": "^1.9.18",
+    "postcss-loader": "^0.6.0",
+    "promise-loader": "^1.0.0",
+    "react-hot-loader": "^1.3.0",
+    "rimraf": "^2.4.3",
+    "s3": "^4.4.0",
+    "s3-site": "^0.1.1",
+    "s3-upload": "0.0.3",
+    "sass-loader": "^3.0.0",
+    "sinon": "^1.17.1",
+    "source-map-support": "^0.3.2",
+    "style-loader": "^0.12.4",
+    "template-html-loader": "0.0.3",
+    "tojson-loader": "^1.0.1",
+    "webpack": "^1.12.2",
+    "webpack-dev-server": "^1.12.0",
+    "webpack-s3-plugin": "^0.4.11"
+  },
+  "engines": {
+    "node": ">=0.12.0"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "node": true,
+      "es6": true
+    },
+    "ecmaFeatures": {
+      "modules": true,
+      "jsx": true
+    },
+    "globals": {
+      "describe": true,
+      "it": true,
+      "sinon": true
+    },
+    "parser": "babel-eslint",
+    "plugins": [
+      "react"
+    ],
+    "rules": {
+      "strict": [
+        2,
+        "global"
+      ],
+      "indent": [
+        2,
+        2
+      ],
+      "quotes": [
+        2,
+        "single"
+      ],
+      "no-alert": 0,
+      "no-underscore-dangle": 0,
+      "react/display-name": 0,
+      "react/jsx-quotes": 1,
+      "react/jsx-no-undef": 1,
+      "react/jsx-sort-props": 1,
+      "react/jsx-uses-react": 1,
+      "react/jsx-uses-vars": 1,
+      "react/no-did-mount-set-state": 1,
+      "react/no-did-update-set-state": 1,
+      "react/no-multi-comp": 1,
+      "react/no-unknown-property": 1,
+      "react/prop-types": 0,
+      "react/react-in-jsx-scope": 1,
+      "react/self-closing-comp": 1,
+      "react/wrap-multilines": 1
+    }
+  }
+}

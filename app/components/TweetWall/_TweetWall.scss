@@ -1,0 +1,52 @@
+@import "toolkit";
+
+.tweets {
+  float: right;
+  width: 48%;
+  font-family: Montserrat, sans-serif;
+  font-size: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  opacity: 0.01;
+  transition: opacity 500ms ease;
+
+  a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 1s ease;
+  }
+
+}
+
+.tweet {
+  overflow: hidden;
+}
+
+.tweets li {
+  margin-bottom: 10px;
+}
+
+.time {
+  // color: #ccc;
+  opacity: 0.6;
+}
+
+.media {
+  float: left;
+  margin-right: 6px;
+  position: relative;
+
+  img {
+    height: 45px;
+    width: auto;
+  }
+
+  i {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+  }
+}
+
+
