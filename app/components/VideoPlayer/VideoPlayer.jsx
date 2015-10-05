@@ -22,6 +22,7 @@ export default class VideoPlayer extends Component {
       switch(action.actionType) {
         case 'VIDEO_JUMPTO':
           this.player.seekTo(action.time);
+          this.player.playVideo();
           break;
         default:
       }

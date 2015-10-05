@@ -25,3 +25,18 @@
   text-transform: uppercase;
   transition: all 0.5s ease;
 }
+
+.startbutton {
+  font-size: 90px;
+  position: absolute;
+  right: 190px;
+  top: 170px;
+  color: #eeeeee;
+  border: 0;
+  background: transparent;
+  transition: opacity 1s ease;
+
+  &:hover {
+    color: lighten(#880066, 40%);
+  }
+}

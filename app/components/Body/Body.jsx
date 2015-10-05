@@ -6,6 +6,7 @@ import Menu from '../Menu/Menu';
 import VideoPlayer from '../VideoPlayer/VideoPlayer';
 import TweetWall   from '../TweetWall/TweetWall';
 import TweetGraph  from '../TweetGraph/TweetGraph';
+import AppActions from '../../actions/AppActions';
 
 let { PropTypes } = React;
 
@@ -22,6 +23,16 @@ export default class Body extends React.Component {
     items: PropTypes.array.isRequired
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {started: false};
+  }
+
+  start = () => {
+    this.setState({ started: true });
+    AppActions.jumpVideoTo(0);
+  }
+
   render() {
     var headerStyle = {
       color:     this.props.colourScheme[4],
@@ -35,6 +46,10 @@ export default class Body extends React.Component {
 
     var promPrettyTime = moment(this.props.state.promLocalTime).utcOffset(1).format('hh:mm:ssa');
 
+    var startButtonStyle = {
+      display: this.state.started ? 'none' : 'block'
+    };
+
     return (
       <div className={styles.body}>
         <h1 className={styles.header} style={headerStyle}>#IbizaProm</h1>
@@ -42,6 +57,11 @@ export default class Body extends React.Component {
         <TweetGraph {...this.props}/>
 
         <TweetWall {...this.props}/>
+
+        <button className={styles.startbutton} style={startButtonStyle} onClick={this.start}>
+          <i className="fa fa-play-circle"></i>
+        </button>
+
         <VideoPlayer/>
       </div>
     );
