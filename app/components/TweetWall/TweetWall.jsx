@@ -12,7 +12,7 @@ export default class TweetWall extends React.Component {
   	promStart:    moment('2015-07-29 22:17:00+0100').valueOf(),
     colourScheme: [],
     tweets:       [],
-    maxTweets:    16,
+    maxTweets:    13,
     time:         0
   }
 
