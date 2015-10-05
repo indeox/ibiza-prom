@@ -1,14 +1,14 @@
 import styles from './_VideoPlayer.scss';
 import AppActions from '../../actions/AppActions';
 import React from 'react';
-
+import AppDispatcher from '../../dispatcher/AppDispatcher';
 import { TIME_UPDATED } from '../../constants/AppConstants';
 
 let { Component, PropTypes } = React;
 
 export default class VideoPlayer extends Component {
 
-  componentDidMount() {
+  componentDidMount = () => {
     this.container = React.findDOMNode(this);
     window.onYouTubeIframeAPIReady = this.loadPlayer;
 
@@ -17,6 +17,16 @@ export default class VideoPlayer extends Component {
     tag.src = 'https://www.youtube.com/iframe_api';
 
     this.container.appendChild(tag)
+
+    AppDispatcher.register((action) => {
+      switch(action.actionType) {
+        case 'VIDEO_JUMPTO':
+          this.player.seekTo(action.time);
+          break;
+        default:
+      }
+    });
+
   }
 
   onPlayerReady() {

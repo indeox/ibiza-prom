@@ -31,7 +31,7 @@ class ColoursStore extends BaseStore {
 
   getColourSchemeForTime(time) {
     var colourHex = this.getColourForTime(time);
-    if (!colourHex) { return;}
+    if (!colourHex) { return; }
 
     return scm.from_hex(colourHex.substr(1))
               .distance(0.1)

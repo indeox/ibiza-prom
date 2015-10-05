@@ -3,6 +3,7 @@ import React from 'react';
 import moment from 'moment';
 import chroma from 'chroma-js';
 import {Sparklines, SparklinesBars} from 'react-sparklines';
+import AppActions from '../../actions/AppActions';
 import _ from 'lodash';
 
 export default class TweetGraph extends React.Component {
@@ -35,8 +36,11 @@ export default class TweetGraph extends React.Component {
   }
 
   jumpToTime = (e) => {
-    // var x = e.pageX - this.container.offsetLeft;
-    // console.log(x, e.pageX, this.container.offsetLeft, e.clientX);
+    var x          = e.pageX - this.container.getBoundingClientRect().left;
+    var xPercent   = (x/this.container.offsetWidth);
+    var timeToJump = 5531 * xPercent;
+
+    AppActions.jumpVideoTo(timeToJump);
   }
 
   render() {

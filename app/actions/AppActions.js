@@ -10,6 +10,13 @@ export default {
     });
   },
 
+  jumpVideoTo(time){
+    AppDispatcher.dispatch({
+      actionType: 'VIDEO_JUMPTO',
+      time: time
+    });
+  },
+
   loadContent() {
     var coloursPromise = WebAPI.getColours()
           .then((items) => {
