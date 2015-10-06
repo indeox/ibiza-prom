@@ -1,7 +1,7 @@
 var path = require('path');
 var util = require('util');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var CompressionPlugin = require("compression-webpack-plugin");
+var CompressionPlugin = require('compression-webpack-plugin');
 var webpack = require('webpack');
 var pkg = require('../package.json');
 
@@ -29,14 +29,7 @@ if (DEBUG) {
         NODE_ENV: JSON.stringify('production')
       }
     }),
-    new webpack.NoErrorsPlugin(),
-    new CompressionPlugin({
-      asset: "{file}.gz",
-      algorithm: "gzip",
-      regExp: /\.js$|\.html|\.css$/,
-      threshold: 10240,
-      minRatio: 0.8
-    })
+    new webpack.NoErrorsPlugin()
   );
 }
 
