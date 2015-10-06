@@ -25,11 +25,11 @@ export default class Body extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {started: false};
+    this.state = {hasStarted: false};
   }
 
   start = () => {
-    this.setState({ started: true });
+    this.setState({ hasStarted: true });
     AppActions.jumpVideoTo(0);
   }
 
@@ -47,7 +47,7 @@ export default class Body extends React.Component {
     var promPrettyTime = moment(this.props.state.promLocalTime).utcOffset(1).format('hh:mm:ssa');
 
     var startButtonStyle = {
-      display: this.state.started ? 'none' : 'block'
+      display: this.props.time > 0 || this.state.hasStarted ? 'none' : 'block'
     };
 
     return (
