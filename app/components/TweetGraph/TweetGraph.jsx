@@ -48,7 +48,7 @@ export default class TweetGraph extends React.Component {
     var progress      = (this.props.time / 5531) * 100;
 
     var graphStyle = {
-      backgroundColor:   backgroundRGB.css(),
+      //backgroundColor:   backgroundRGB.css(),
       borderTopColor:    this.props.colourScheme[5],
       borderBottomColor: this.props.colourScheme[5],
     }
@@ -72,7 +72,7 @@ export default class TweetGraph extends React.Component {
 
     var sparkLinesStyle = {
       stroke:      this.props.primaryColour || '#ccc',
-      strokeWidth: 0,
+      strokeWidth: 1,
       fill:        this.props.colourScheme ? this.props.colourScheme[5] : '#ccc',
       fillOpacity: 1
     }
