@@ -48,13 +48,6 @@ export default class App extends React.Component {
         break;
         case 'COLOUR_UPDATED':  this.setState({ time:    action.colour }); break;
         case 'COLOURS_UPDATED': this.setState({ colours: action.item });   break;
-        case 'TWEETS_UPDATED':
-          this.setState({
-            tweets:    action.items,
-            tweetData: TweetsStore.getTweetData()
-          });
-          console.log(TweetsStore.getTweetData())
-        break;
         default:
       }
     });

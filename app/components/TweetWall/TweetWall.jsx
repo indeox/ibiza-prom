@@ -16,19 +16,6 @@ export default class TweetWall extends React.Component {
     time:         0
   }
 
-  componentWillUpdate(nextProps, nextState) {
-      var colourIndex   = 4;
-      var self = this;
-
-      nextProps.tweets = nextProps.tweets.map((tweet, index) => {
-        tweet.colour = self.props.colourScheme[colourIndex];
-        colourIndex += 1;
-        if (colourIndex > 9) { colourIndex = 4; }
-
-        return tweet;
-      });
-  }
-
   getTweetsAt(timestamp) {
     var self = this;
     var tweets = this.props.tweets.filter(function(tweet) {
@@ -41,12 +28,14 @@ export default class TweetWall extends React.Component {
   }
 
   render() {
+    var self = this;
   	var promLocalTime = this.props.promStart + (this.props.time * 1000);
     var numTweets     = this.props.tweets.length;
 
 	  var tweets = this.getTweetsAt(promLocalTime).map(function(tweet, index) {
       var media;
       var mediaIcon;
+      var tweetColour = self.props.colourScheme[tweet.colourIndex];
 
       if (tweet.media) {
         var mediaClassname = 'fa fa-';
@@ -64,7 +53,7 @@ export default class TweetWall extends React.Component {
 
       return (
       	<li className={styles.tweet} key={tweet.id}>
-      		<a target="_blank" href={tweet.url} style={{color:tweet.colour}}>
+      		<a target="_blank" href={tweet.url} style={{color:tweetColour}}>
             {media}
             <span className={styles.time}>{tweet.time.split('-')[0]} | </span>
             <span dangerouslySetInnerHTML={{__html: tweet.text}}></span>
