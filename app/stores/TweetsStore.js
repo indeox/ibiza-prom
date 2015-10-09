@@ -1,6 +1,10 @@
 import BaseStore from './BaseStore';
 import AppDispatcher from '../dispatcher/AppDispatcher';
+import moment from 'moment';
 import _ from 'lodash';
+
+const promStart = moment('2015-07-29 22:17:00+0100').valueOf();
+const promEnd   = moment(promStart).add(5530, 'seconds').valueOf();
 
 class TweetsStore extends BaseStore {
 
@@ -16,6 +20,14 @@ class TweetsStore extends BaseStore {
     });
 
     super.setAll(items);
+  }
+
+  getAll() {
+    // Filter out tweets only between the start and end of the gig
+    return super.getAll().filter(function(tweet) {
+      return tweet.timestamp >= promStart &&
+             tweet.timestamp <= promEnd
+    });
   }
 
   emitChange() {

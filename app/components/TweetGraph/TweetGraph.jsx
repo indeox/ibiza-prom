@@ -2,7 +2,7 @@ import styles from './_TweetGraph.scss';
 import React from 'react';
 import moment from 'moment';
 import chroma from 'chroma-js';
-import {Sparklines, SparklinesBars} from 'react-sparklines';
+import Sparklines from './Sparklines';
 import AppActions from '../../actions/AppActions';
 import _ from 'lodash';
 
@@ -81,9 +81,7 @@ export default class TweetGraph extends React.Component {
       <div className={styles.graph} style={graphStyle} onClick={this.jumpToTime}>
         <div className={styles.promtime} style={promTimeStyle}>{promPrettyTime}</div>
 
-        <Sparklines data={this.props.tweetData} width={1000} height={40} >
-            <SparklinesBars style={sparkLinesStyle}  height={40} points={this.props.tweetData}/>
-        </Sparklines>
+        <Sparklines colour={sparkLinesStyle.fill} tweets={this.props.tweets} width={1000} height={40} />
 
         <div className={styles.marker} style={markerStyle}/>
       </div>

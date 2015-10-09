@@ -31,3 +31,12 @@
   transition: all 0.5s ease;
   margin-left: -46px;
 }
+
+.sparklines {
+  width: 100%;
+  height: 40px;
+}
+
+.bar {
+  transition: fill 1s ease;
+}

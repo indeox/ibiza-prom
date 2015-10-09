@@ -63,8 +63,7 @@ export default class TweetWall extends React.Component {
 
             <div className={styles.tweetMeta}>
               <span className={styles.time}>{tweet.time.split('-')[0]} | </span>
-              <span className={styles.username}>{tweet.userName}</span>
-              <span className={styles.userscreenname}>@{tweet.userScreenName}</span>
+              <span className={styles.username}>@{tweet.userScreenName} ({tweet.userName})</span>
             </div>
           </a>
       	</li>

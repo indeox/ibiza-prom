@@ -34,6 +34,12 @@ export default class App extends React.Component {
     ItemsStore.addChangeListener(this.onChange);
     TweetsStore.addChangeListener(this.onChange);
 
+    // Set prom start/end
+    this.setState({
+      promStart: promStart,
+      promEnd:   moment(promStart).add(5530, 'seconds').valueOf()
+    });
+
     AppDispatcher.register((action) => {
       switch(action.actionType) {
         case 'TIME_UPDATED':
