@@ -7,7 +7,8 @@ let { PropTypes } = React;
 export default class Mesh extends React.Component {
 
   static defaultProps = {
-    colour: '#BE2761'
+    colour:         '#BE2761',
+    meshUpdateInMs: 100
   };
 
   static propTypes = {
@@ -73,13 +74,14 @@ export default class Mesh extends React.Component {
     this.now = Date.now() - this.start;
     this.distortMesh();
 
+    // Animate the new colour
     var newLightColour = this.chromaScale(this.chromaStep).hex();
     this.light.diffuse.set(newLightColour);
-    this.chromaStep += 0.1;
+    this.chromaStep += (this.props.meshUpdateInMs/1000);
 
     this.renderer.render(this.scene);
     // requestAnimationFrame(this.animate);
-    setTimeout(this.animate, 100);
+    setTimeout(this.animate, this.props.meshUpdateInMs);
   }
 
   tweakMesh() {
