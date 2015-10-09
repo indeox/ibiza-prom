@@ -50,6 +50,10 @@ export default class Body extends React.Component {
       display: this.props.time > 0 || this.state.hasStarted ? 'none' : 'block'
     };
 
+    var trackInfoStyle = {
+      opacity: this.props.track.title ? 0.5 : 0
+    };
+
     return (
       <div className={styles.body}>
         <h1 className={styles.header} style={headerStyle}>#IbizaProm</h1>
@@ -68,6 +72,8 @@ export default class Body extends React.Component {
 
         <div style={{ visibility: this.state.hasStarted == true ? 'visible' : 'hidden' }}>
           <VideoPlayer/>
+          <h2 className={styles.track} style={trackInfoStyle}>{this.props.track.title}</h2>
+          <p className={styles.artist} style={trackInfoStyle}>{this.props.track.artist}</p>
         </div>
       </div>
     );

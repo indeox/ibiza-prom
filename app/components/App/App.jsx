@@ -8,6 +8,7 @@ import moment from 'moment';
 import ItemsStore from '../../stores/ItemsStore';
 import ColoursStore from '../../stores/ColoursStore';
 import TweetsStore from '../../stores/TweetsStore';
+import TrackStore from '../../stores/TrackStore';
 
 import Body from '../Body/Body';
 import Footer from '../Footer/Footer';
@@ -22,7 +23,8 @@ function getAppState() {
     tweets:       TweetsStore.getAll(),
     tweetData:    TweetsStore.getTweetData(),
     promProgress: 0,
-    colourScheme: ['#ffffff', '#ffffff', '#ffffff', '#ffffff', '#ffffff', '#ffffff']
+    colourScheme: ['#ffffff', '#ffffff', '#ffffff', '#ffffff', '#ffffff', '#ffffff'],
+    track:        { name: '', artist: '' }
   };
 }
 
@@ -49,7 +51,8 @@ export default class App extends React.Component {
             promLocalTime: promStart + (action.time * 1000),
             promProgress:  Math.round((action.time / 5531) * 100),
             primaryColour: ColoursStore.getColourForTime(action.time),
-            colourScheme:  ColoursStore.getColourSchemeForTime(action.time)
+            colourScheme:  ColoursStore.getColourSchemeForTime(action.time),
+            track:         TrackStore.getTrackAt(action.time)
           });
         break;
         case 'COLOUR_UPDATED':  this.setState({ time:    action.colour }); break;

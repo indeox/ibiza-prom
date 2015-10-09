@@ -52,3 +52,14 @@
     color: lighten(#880066, 40%);
   }
 }
+
+.track,
+.artist {
+  font-family: Montserrat, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  opacity: 0.6;
+  transition: opacity 1.5s ease;
+  display: none;
+}
