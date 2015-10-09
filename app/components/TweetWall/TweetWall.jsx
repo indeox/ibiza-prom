@@ -12,7 +12,7 @@ export default class TweetWall extends React.Component {
   	promStart:    moment('2015-07-29 22:17:00+0100').valueOf(),
     colourScheme: [],
     tweets:       [],
-    maxTweets:    13,
+    maxTweets:    10,
     time:         0
   }
 
@@ -56,9 +56,16 @@ export default class TweetWall extends React.Component {
       	<li className={styles.tweet} key={tweet.id}>
       		<a target="_blank" href={tweet.url} style={{color:tweetColour}}>
             {media}
-            <span className={styles.time}>{tweet.time.split('-')[0]} | </span>
-            <span className="username">{tweet.username}</span>
-            <span className={styles.content} dangerouslySetInnerHTML={{__html: tweet.text}}></span>
+            <div className={styles.tweetMeta}>
+              {{ /*<img className={styles.userimage} src={tweet.userProfileImageUrl} /> */ }}
+              <span className={styles.content} dangerouslySetInnerHTML={{__html: tweet.text}}></span>
+            </div>
+
+            <div className={styles.tweetMeta}>
+              <span className={styles.time}>{tweet.time.split('-')[0]} | </span>
+              <span className={styles.username}>{tweet.userName}</span>
+              <span className={styles.userscreenname}>@{tweet.userScreenName}</span>
+            </div>
           </a>
       	</li>
       )
