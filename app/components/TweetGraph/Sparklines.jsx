@@ -34,11 +34,11 @@ export default class Sparklines extends React.Component {
 
   processTweets = () => {
     var promDuration = _.max(this.props.tweets, 'timestamp').timestamp - _.min(this.props.tweets, 'timestamp').timestamp; // Total: 5530 seconds
-    var numOfLines   = Math.round(this.container.offsetWidth / this.props.barWidth); // 2px for bar width + 1px spacer
-    var barDuration  = Math.round(promDuration / numOfLines);
+    var numOfLines   = Math.floor(this.state.width / this.props.barWidth); // 2px for bar width + 1px spacer
+    var barDuration  = Math.floor(promDuration / numOfLines);
 
     var tweetGraph = _(this.props.tweets)
-                     .countBy((tweet) => { return Math.round(tweet.timestamp / barDuration) })
+                     .countBy((tweet) => { return Math.floor(tweet.timestamp / barDuration) })
                      .values()
                      .value();
 
@@ -51,9 +51,11 @@ export default class Sparklines extends React.Component {
   }
 
   resize = () => {
+    var rect = this.container.getBoundingClientRect();
+
     this.setState({
-      width:  this.container.offsetWidth,
-      height: this.container.offsetHeight
+      width:  rect.width,
+      height: rect.height
     });
 
     this.processTweets();

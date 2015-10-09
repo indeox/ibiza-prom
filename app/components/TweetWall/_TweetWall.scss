@@ -46,6 +46,11 @@
   margin-bottom: 10px;
 }
 
+.tweets li:hover a {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
 .time {
   // color: #ccc;
   opacity: 0.5;
