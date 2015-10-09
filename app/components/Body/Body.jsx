@@ -25,7 +25,7 @@ export default class Body extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {hasStarted: false};
+    this.state = { hasStarted: false };
   }
 
   start = () => {
@@ -58,11 +58,17 @@ export default class Body extends React.Component {
 
         <TweetWall {...this.props}/>
 
-        <button className={styles.startbutton} style={startButtonStyle} onClick={this.start}>
-          <i className="fa fa-play-circle"></i>
-        </button>
+        <div className={styles.intro} style={{ display: this.state.hasStarted == true ? 'none' : 'block' }}>
+          <p>On July 29th 2015 for the BBC Proms season, <a href="http://www.bbc.co.uk/radio1" target="_new">Radio 1</a> celebrated their 20 year association with the island of Ibiza by enlisting the <a href="http://www.theheritageorchestra.com/" target="_new">Heritage Orchestra</a> to play over twenty classic dance club tracks for their first ever Prom, turning the Royal Albert Hall into one giant nightclub on a Wednesday night.</p>
+          <p>Hit <strong>Play</strong> below to replay the concert, along with all the tweets published at the same time.</p>
+          <button className={styles.startbutton} style={startButtonStyle} onClick={this.start}>
+            <i className="fa fa-play-circle"></i>
+          </button>
+        </div>
 
-        <VideoPlayer/>
+        <div style={{ visibility: this.state.hasStarted == true ? 'visible' : 'hidden' }}>
+          <VideoPlayer/>
+        </div>
       </div>
     );
   }

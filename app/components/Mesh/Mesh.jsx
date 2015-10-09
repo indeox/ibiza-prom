@@ -9,7 +9,7 @@ export default class Mesh extends React.Component {
 
   static defaultProps = {
     colour:         '#BE2761',
-    simpleMode:     true,
+    simpleMode:     false,
     meshUpdateInMs: 100
   };
 
