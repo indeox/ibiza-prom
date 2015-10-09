@@ -1,6 +1,7 @@
 import styles from './_Mesh.scss';
 import React  from 'react';
 import chroma from 'chroma-js';
+import favicon from 'favicon-color';
 
 let { PropTypes } = React;
 
@@ -8,6 +9,7 @@ export default class Mesh extends React.Component {
 
   static defaultProps = {
     colour:         '#BE2761',
+    simpleMode:     true,
     meshUpdateInMs: 100
   };
 
@@ -20,6 +22,7 @@ export default class Mesh extends React.Component {
     // getting the wrong dimensions on pageload
     setTimeout(() => {
       this.container = React.findDOMNode(this);
+      this.faviconEl = document.querySelector('[rel=icon]');
 
       this.renderer = new FSS.CanvasRenderer();
       this.scene    = new FSS.Scene();
@@ -47,7 +50,10 @@ export default class Mesh extends React.Component {
 
       this.resize();
       this.tweakMesh();
-      this.animate();
+
+      if (!this.props.simpleMode) {
+        this.animate();
+      }
     }, 10);
   }
 
@@ -68,6 +74,8 @@ export default class Mesh extends React.Component {
     this.finalLightColour  = this.props.colour;
     this.chromaScale = chroma.scale([currentLightColour, this.finalLightColour]);
     this.chromaStep  = 0;
+
+    favicon(this.faviconEl, this.finalLightColour);
   }
 
   animate = () => {
