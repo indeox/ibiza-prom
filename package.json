@@ -21,7 +21,7 @@
     "test": "NODE_ENV=test karma start",
     "test-travis": "NODE_ENV=test karma start --single-run",
     "webpack": "webpack --colors --progress --config ./webpack/config",
-    "deploy": "npm run build && node ./tasks/deploy.js"
+    "deploy": "npm run build && node ./tasks/deploy-dc.js"
   },
   "dependencies": {
     "chart.js": "^1.0.2",
@@ -59,6 +59,7 @@
     "extract-text-webpack-plugin": "^0.8.2",
     "file-loader": "^0.8.4",
     "glob": "^5.0.15",
+    "gulp": "^3.9.0",
     "html-loader": "^0.3.0",
     "json-loader": "^0.5.3",
     "karma": "^0.13.10",
