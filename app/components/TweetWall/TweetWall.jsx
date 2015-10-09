@@ -51,12 +51,14 @@ export default class TweetWall extends React.Component {
         )
       }
 
+      // Render Tweet
       return (
       	<li className={styles.tweet} key={tweet.id}>
       		<a target="_blank" href={tweet.url} style={{color:tweetColour}}>
             {media}
             <span className={styles.time}>{tweet.time.split('-')[0]} | </span>
-            <span dangerouslySetInnerHTML={{__html: tweet.text}}></span>
+            <span className="username">{tweet.username}</span>
+            <span className={styles.content} dangerouslySetInnerHTML={{__html: tweet.text}}></span>
           </a>
       	</li>
       )
