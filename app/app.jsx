@@ -1,4 +1,5 @@
 import './favicon.ico';
+import './social-image.jpg';
 import './index.html';
 import 'babel-core/polyfill';
 import 'normalize.css/normalize.css';
