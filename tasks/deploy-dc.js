@@ -5,7 +5,7 @@ var rsync = new Rsync()
   .shell('ssh')
   .flags('azhP')
   .source(__dirname + '/../build/')
-  .destination('deepcobalt@deepcobalt.com:/home/deepcobalt/ibizaprom.deepcobalt.com/_test');
+  .destination('deepcobalt@deepcobalt.com:/home/deepcobalt/ibizaprom.deepcobalt.com/');
 
 // Execute the command
 rsync.execute(function(error, code, cmd) {
