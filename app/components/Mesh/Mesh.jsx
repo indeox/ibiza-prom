@@ -1,7 +1,7 @@
 import styles from './_Mesh.scss';
 import React  from 'react';
 import chroma from 'chroma-js';
-import favicon from 'favicon-color';
+import favicolor from 'favicolor';
 
 let { PropTypes } = React;
 
@@ -75,7 +75,7 @@ export default class Mesh extends React.Component {
     this.chromaScale = chroma.scale([currentLightColour, this.finalLightColour]);
     this.chromaStep  = 0;
 
-    favicon(this.faviconEl, this.finalLightColour);
+    favicolor(this.faviconEl, this.finalLightColour);
   }
 
   animate = () => {
