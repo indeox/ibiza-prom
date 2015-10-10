@@ -86,7 +86,7 @@ export default class Body extends React.Component {
           <VideoPlayer/>
 
           <div className={styles.description}>
-            <p><i className="fa fa-info-circle"></i> This is an experimental hack, attempting to synchronise the Radio 1 Ibiza Prom with the tweets of the night, exactly as they happened. The colour scheme of the page also changes to match the predominant colour in the playing video. </p>
+            <p><i className="fa fa-info-circle"></i> This is an experimental hack, attempting to synchronise the Radio 1 Ibiza Prom with the tweets of the night, exactly as they happened.</p>
             <p>It was made purely for the fun of it, and as a proof of concept, it may sometimes behave erratically. If all fails, you can still enjoy the fantastic gig for what it was. Any comments, fire them at <a href="https://twitter.com/indeox" target="_new" style={highlightStyle}>@indeox</a></p>
           </div>
           {
