@@ -30,6 +30,10 @@ export default class Body extends React.Component {
     AppActions.jumpVideoTo(0);
   }
 
+  componentWillUpdate(nextProps, nextState) {
+    nextState.hasStarted = nextProps.time > 0;
+  }
+
   render() {
     var headerStyle = {
       color:     this.props.colourScheme[4],
@@ -44,7 +48,6 @@ export default class Body extends React.Component {
     var promPrettyTime = moment(this.props.state.promLocalTime).utcOffset(1).format('hh:mm:ssa');
 
     var startButtonStyle = {
-      // display: this.props.time > 0 || this.state.hasStarted ? 'none' : 'block'
       opacity: this.props.videoReady ? 1 : 0
     };
 
