@@ -68,7 +68,7 @@ export default class Body extends React.Component {
 
         <div className={styles.intro} style={{ display: this.state.hasStarted == true ? 'none' : 'block' }}>
           <p>On July 29th 2015, for the BBC Proms season, <a href="http://www.bbc.co.uk/radio1" target="_new">Radio 1</a> celebrated their 20 year association with the island of Ibiza by enlisting the <a href="http://www.theheritageorchestra.com/" target="_new">Heritage Orchestra</a> to play over twenty classic dance club tracks for their first times at the Proms, turning the Royal Albert Hall into one giant nightclub and throwing the poshest rave in London.</p>
-          <p>Hit <strong>Play</strong> below to replay the concert, along with all the tweets published at the same time.</p>
+          <p>Hit <strong>Play</strong> below to replay the concert, along with all the tweets published at the same time. <em>Best viewed on larger screens.</em></p>
 
           <button className={styles.startbutton} style={startButtonStyle} onClick={this.start}>
             <i className="fa fa-play-circle"></i>
