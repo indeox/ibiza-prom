@@ -31,7 +31,7 @@ export default class Body extends React.Component {
   }
 
   componentWillUpdate(nextProps, nextState) {
-    nextState.hasStarted = nextProps.time > 0;
+
   }
 
   render() {
@@ -67,7 +67,7 @@ export default class Body extends React.Component {
       <div className={styles.body}>
         <h1 className={styles.header} style={headerStyle}>#IbizaProm Replay</h1>
 
-        <TweetGraph {...this.props}/>
+        <TweetGraph {...this.props} active={this.state.hasStarted} />
 
         <div className={styles.intro} style={{ display: this.state.hasStarted == true ? 'none' : 'block' }}>
           <p>On July 29th 2015, for the BBC Proms season, <a href="http://www.bbc.co.uk/radio1" target="_new">Radio 1</a> celebrated their 20 year association with Ibiza by enlisting the <a href="http://www.theheritageorchestra.com/" target="_new">Heritage Orchestra</a> to play over twenty classic club tracks for their first night out at the Proms, turning the Royal Albert Hall into one giant nightclub and throwing the poshest rave in London.</p>

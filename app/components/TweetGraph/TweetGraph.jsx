@@ -9,6 +9,7 @@ import _ from 'lodash';
 export default class TweetGraph extends React.Component {
 
   static defaultProps = {
+    active:       false,
     colourScheme: [],
     tweets:       [],
     tweetData:    [],
@@ -42,6 +43,11 @@ export default class TweetGraph extends React.Component {
   }
 
   jumpToTime = (e) => {
+    if (!this.props.active) {
+      e.preventDefault();
+      return;
+    }
+
     var x          = e.pageX - this.container.getBoundingClientRect().left;
     var xPercent   = (x/this.container.offsetWidth);
     var timeToJump = 5531 * xPercent;
