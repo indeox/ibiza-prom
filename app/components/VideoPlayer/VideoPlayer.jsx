@@ -56,7 +56,13 @@ export default class VideoPlayer extends Component {
       height:      videoWidth * 0.5625,
       videoId:     'xs3BXVTF7mw',
       startSeconds: 0,
-      playerVars: { controls: 1, enablejsapi: 1, modestbranding: 1, rel: 0 },
+      playerVars: {
+        controls: 1,
+        enablejsapi: 1,
+        modestbranding: 1,
+        rel: 0,
+        origin: window.location.href
+      },
       events: {
         'onReady':       this.onPlayerReady,
         'onStateChange': this.onPlayerStateChange
