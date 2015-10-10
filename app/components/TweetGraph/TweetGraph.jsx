@@ -21,6 +21,12 @@ export default class TweetGraph extends React.Component {
 
   componentDidMount() {
     this.container = React.findDOMNode(this);
+    this.promTime   = this.container.querySelector('.' + styles.promtime);
+    this.timeMarker = this.container.querySelector('.' + styles.marker);
+  }
+
+  componentDidUpdate() {
+    // console.log(this.timeMarker.getBoundingClientRect());
   }
 
   componentWillReceiveProps(props) {
@@ -53,6 +59,14 @@ export default class TweetGraph extends React.Component {
       borderBottomColor: this.props.colourScheme[5],
     }
 
+    // Prom time horizontal position
+    if (this.promTime) {
+      var promTimeWidth = this.promTime.getBoundingClientRect().width;
+      var markerX       = this.timeMarker.getBoundingClientRect().left;
+      var isPastLeftBoundary  = markerX - (promTimeWidth/2) <= 0;
+      var isPastRightBoundary = markerX + (promTimeWidth/2) >= window.innerWidth;
+    }
+
     var promTimePosition = progress;
     if      (progress < 4.5)  { promTimePosition = 4.5; }
     else if (progress > 95.1) { promTimePosition = 95.1; }
@@ -60,8 +74,12 @@ export default class TweetGraph extends React.Component {
     var promTimeStyle = {
       color:           this.props.primaryColour,
       backgroundColor: this.props.colourScheme[4],
-      left:            promTimePosition + '%'
+      left:            promTimePosition + '%',
+      marginLeft:      null
     }
+
+    if (isPastLeftBoundary)  { promTimeStyle.left = 0; promTimeStyle.marginLeft = 0; }
+    if (isPastRightBoundary) { promTimeStyle.left = window.innerWidth - promTimeWidth; promTimeStyle.marginLeft = 0; }
 
     var promPrettyTime = moment(this.props.promLocalTime).utcOffset(1).format('hh:mm:ssa');
 
