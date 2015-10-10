@@ -5,11 +5,15 @@ import favicolor from 'favicolor';
 
 let { PropTypes } = React;
 
+// This is a really crappy way to disable the Mesh rendering
+// on touch devices (the assumption is that it's too battery intensive)
+var hasTouch = 'ontouchstart' in window || navigator.msMaxTouchPoints;
+
 export default class Mesh extends React.Component {
 
   static defaultProps = {
     colour:         '#BE2761',
-    simpleMode:     false,
+    simpleMode:     hasTouch ? true : false,
     meshUpdateInMs: 100
   };
 

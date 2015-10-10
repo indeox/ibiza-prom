@@ -3,6 +3,7 @@ import AppActions from '../../actions/AppActions';
 import React from 'react';
 import AppDispatcher from '../../dispatcher/AppDispatcher';
 import { TIME_UPDATED } from '../../constants/AppConstants';
+import _ from 'lodash';
 
 let { Component, PropTypes } = React;
 
@@ -11,6 +12,7 @@ export default class VideoPlayer extends Component {
   componentDidMount = () => {
     this.container = React.findDOMNode(this);
     window.onYouTubeIframeAPIReady = this.loadPlayer;
+    window.addEventListener('resize', this.resize);
 
     // Load YouTube iFrame API
     var tag = document.createElement('script');
@@ -48,8 +50,13 @@ export default class VideoPlayer extends Component {
     }
   }
 
+  resize = _.debounce(() => {
+    let videoWidth = this.player.f.parentNode.getBoundingClientRect().width;
+    this.player.setSize(videoWidth, videoWidth * 0.5625);
+  }, 250)
+
   loadPlayer = () => {
-    var videoWidth = this.container.offsetWidth;
+    var videoWidth = this.container.getBoundingClientRect().width;
 
     this.player = new YT.Player('player', {
       width:       videoWidth,

@@ -1,13 +1,11 @@
 @import "toolkit";
 
 .tweets {
-  float: right;
-  width: 44%;
   font-family: Montserrat, sans-serif;
   font-size: 10px;
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 8px;
   opacity: 0.01;
   transition: opacity 500ms ease;
 
@@ -15,6 +13,12 @@
     color: #fff;
     text-decoration: none;
     transition: color 1s ease;
+  }
+
+  @media (min-width: 640px) {
+    width: 44%;
+    float: right;
+    padding: 0 8px 0 0;
   }
 
 }

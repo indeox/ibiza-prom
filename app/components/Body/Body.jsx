@@ -52,8 +52,7 @@ export default class Body extends React.Component {
       color: this.props.colourScheme[4]
     }
 
-    var introStyle = {
-      width:      '55%',
+    var videoContainerStyle = {
       visibility: this.state.hasStarted == true ? 'visible' : 'hidden'
     };
 
@@ -67,10 +66,8 @@ export default class Body extends React.Component {
 
         <TweetGraph {...this.props}/>
 
-        <TweetWall {...this.props}/>
-
         <div className={styles.intro} style={{ display: this.state.hasStarted == true ? 'none' : 'block' }}>
-          <p>On July 29th 2015, for the BBC Proms season, <a href="http://www.bbc.co.uk/radio1" target="_new">Radio 1</a> celebrated their 20 year association with the island of Ibiza by enlisting the <a href="http://www.theheritageorchestra.com/" target="_new">Heritage Orchestra</a> to play over twenty classic dance club tracks for their first times at the Proms, turning the Royal Albert Hall into one giant nightclub and having the poshest rave in London.</p>
+          <p>On July 29th 2015, for the BBC Proms season, <a href="http://www.bbc.co.uk/radio1" target="_new">Radio 1</a> celebrated their 20 year association with the island of Ibiza by enlisting the <a href="http://www.theheritageorchestra.com/" target="_new">Heritage Orchestra</a> to play over twenty classic dance club tracks for their first times at the Proms, turning the Royal Albert Hall into one giant nightclub and throwing the poshest rave in London.</p>
           <p>Hit <strong>Play</strong> below to replay the concert, along with all the tweets published at the same time.</p>
 
           <button className={styles.startbutton} style={startButtonStyle} onClick={this.start}>
@@ -78,7 +75,7 @@ export default class Body extends React.Component {
           </button>
         </div>
 
-        <div style={introStyle}>
+        <div className={styles.videocontainer} style={videoContainerStyle}>
           <VideoPlayer/>
 
           <div className={styles.description}>
@@ -89,6 +86,8 @@ export default class Body extends React.Component {
             <p className={styles.artist} style={trackInfoStyle}>{this.props.track.artist}</p>*/
           }
         </div>
+
+        <TweetWall {...this.props}/>
       </div>
     );
   }

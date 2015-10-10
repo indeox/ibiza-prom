@@ -23,7 +23,9 @@ export default class Sparklines extends React.Component {
   componentDidMount() {
     var self = this;
     this.container = React.findDOMNode(this);
-    setTimeout(this.resize, 100);
+    window.addEventListener('resize', this.resize);
+
+    this.resize();
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -50,7 +52,7 @@ export default class Sparklines extends React.Component {
     // console.log(numOfLines, barDuration, tweetGraph.length);
   }
 
-  resize = () => {
+  resize = _.debounce(() => {
     var rect = this.container.getBoundingClientRect();
 
     this.setState({
@@ -59,7 +61,7 @@ export default class Sparklines extends React.Component {
     });
 
     this.processTweets();
-  }
+  }, 250)
 
   render() {
     var rectStyle = {

@@ -3,7 +3,7 @@
 .graph {
   margin: 0 0 10px 0;
   padding: 30px 0 0 0;
-  height: 40px;
+  // height: 40px;
   width: 100%;
   position: relative;
   // border-top: 1px solid rgba(255,255,255,0.5);
@@ -13,10 +13,10 @@
 
 .marker {
   width: 2px;
-  height: 45px;
+  height: 40px;
   position: absolute;
   left: 50%;
-  bottom: 0;
+  top: 30px;
   background: #cc0000;
   transition: all 0.5s ease;
 }
