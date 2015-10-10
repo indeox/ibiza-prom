@@ -83,7 +83,7 @@ export default class Body extends React.Component {
           <VideoPlayer/>
 
           <div className={styles.description}>
-            <p><i className="fa fa-info-circle"></i> This is an experimental hack to attempt to synchronise the Radio 1 Ibiza Prom with the tweets of the night, exactly as it happened. In addition, the colour scheme of the page changes to match the predominant colour in the playing video. It is only a proof of concept and may not always be on its best behaviour. Any comments, shoot them my way <a href="https://twitter.com/indeox" target="_new" style={highlightStyle}>@indeox</a></p>
+            <p><i className="fa fa-info-circle"></i> This is an experimental hack, attempting to synchronise the Radio 1 Ibiza Prom with the tweets of the night, exactly as they happened. In addition, the colour scheme of the page changes to match the predominant colour in the playing video. It is only a proof of concept and may not always be on its best behaviour. Any comments, fire them my way <a href="https://twitter.com/indeox" target="_new" style={highlightStyle}>@indeox</a></p>
           </div>
           {
             /*<h2 className={styles.track} style={trackInfoStyle}>{this.props.track.title}</h2>
