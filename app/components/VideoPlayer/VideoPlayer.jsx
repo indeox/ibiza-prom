@@ -9,6 +9,8 @@ let { Component, PropTypes } = React;
 
 export default class VideoPlayer extends Component {
 
+  videoAtStart = false;
+
   componentDidMount = () => {
     this.container = React.findDOMNode(this);
     window.onYouTubeIframeAPIReady = this.loadPlayer;
@@ -33,11 +35,23 @@ export default class VideoPlayer extends Component {
   }
 
   onPlayerReady = () => {
-    AppActions.videoReady();
+    this.player.setVolume(0);
+    this.player.seekTo(0);
   }
 
   onPlayerStateChange = (event) => {
     if (event.data == YT.PlayerState.PLAYING) {
+      if (!this.videoAtStart) {
+        // This is a horrible hack to work around YouTube's 'Remember video position feature'
+        // that keep starting the video midway through, if you're logged in to YT
+        this.player.stopVideo();
+        this.player.seekTo(0);
+        this.videoAtStart = true;
+
+        this.player.setVolume(100);
+        AppActions.videoReady();
+      }
+
       this.interval = setInterval(() => {
         AppActions.setTime(this.player.getCurrentTime());
       }, 250)
@@ -46,6 +60,10 @@ export default class VideoPlayer extends Component {
     if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED) {
       if (this.interval) {
         clearInterval(this.interval);
+      }
+
+      if (!this.videoAtStart) {
+        this.player.seekTo(0);
       }
     }
   }
@@ -75,6 +93,7 @@ export default class VideoPlayer extends Component {
         'onStateChange': this.onPlayerStateChange
       }
     });
+
   }
 
   render() {
