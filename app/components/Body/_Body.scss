@@ -9,10 +9,13 @@
 }
 
 .header {
+  font-size: 25px;
   font-family: Montserrat, sans-serif;
   // border-bottom: 1px solid $border-color;
   margin: 5px 0 0px 0;
   padding-bottom: 3px;
+  position: absolute;
+  width: 100%;
 }
 
 .intro {

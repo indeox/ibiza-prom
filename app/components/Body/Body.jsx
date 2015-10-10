@@ -33,7 +33,7 @@ export default class Body extends React.Component {
   render() {
     var headerStyle = {
       color:     this.props.colourScheme[4],
-      textAlign: this.props.promProgress > 25 ? 'left' : 'right'
+      textAlign: this.props.promProgress > 31 ? 'left' : 'right'
     };
 
     var promTimeStyle = {
@@ -63,7 +63,7 @@ export default class Body extends React.Component {
 
     return (
       <div className={styles.body}>
-        <h1 className={styles.header} style={headerStyle}>#IbizaProm</h1>
+        <h1 className={styles.header} style={headerStyle}>#IbizaProm Replay</h1>
 
         <TweetGraph {...this.props}/>
 
