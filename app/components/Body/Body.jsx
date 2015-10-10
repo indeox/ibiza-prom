@@ -48,8 +48,10 @@ export default class Body extends React.Component {
     var promPrettyTime = moment(this.props.state.promLocalTime).utcOffset(1).format('hh:mm:ssa');
 
     var startButtonStyle = {
-      opacity: this.props.videoReady ? 1 : 0
+      opacity: this.props.videoReady ? 1 : 0.3
     };
+
+    var startButtonClass = this.props.videoReady ? 'fa fa-play-circle' : 'fa fa-circle-o-notch fa-spin';
 
     var highlightStyle = {
       color: this.props.colourScheme[4]
@@ -74,7 +76,7 @@ export default class Body extends React.Component {
           <p>Hit <strong>Play</strong> below to replay the concert, along with all the tweets published at the same time. <em>Best viewed on larger screens.</em></p>
 
           <button className={styles.startbutton} style={startButtonStyle} onClick={this.start}>
-            <i className="fa fa-play-circle"></i>
+            <i className={startButtonClass}></i>
           </button>
         </div>
 
