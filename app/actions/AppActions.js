@@ -17,6 +17,12 @@ export default {
     });
   },
 
+  videoReady(time){
+    AppDispatcher.dispatch({
+      actionType: 'VIDEO_READY'
+    });
+  },
+
   loadContent() {
     var coloursPromise = WebAPI.getColours()
           .then((items) => {

@@ -31,7 +31,7 @@ export default class VideoPlayer extends Component {
   }
 
   onPlayerReady() {
-
+    AppActions.videoReady();
   }
 
   onPlayerStateChange = (event) => {

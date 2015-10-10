@@ -19,12 +19,12 @@ const promStart = moment('2015-07-29 22:17:00+0100').valueOf();
 function getAppState() {
   return {
     lightsOn:     false,
+    videoReady:   false,
     items:        ItemsStore.getAll(),
     tweets:       TweetsStore.getAll(),
     tweetData:    TweetsStore.getTweetData(),
     promProgress: 0,
     colourScheme: ['#ffffff', '#ffffff', '#ffffff', '#ffffff', '#ffffff', '#ffffff'],
-    track:        { name: '', artist: '' }
   };
 }
 
@@ -39,7 +39,8 @@ export default class App extends React.Component {
     // Set prom start/end
     this.setState({
       promStart: promStart,
-      promEnd:   moment(promStart).add(5530, 'seconds').valueOf()
+      promEnd:   moment(promStart).add(5530, 'seconds').valueOf(),
+      track:     { title: '', artist: '' }
     });
 
     AppDispatcher.register((action) => {
@@ -55,6 +56,7 @@ export default class App extends React.Component {
             track:         TrackStore.getTrackAt(action.time)
           });
         break;
+        case 'VIDEO_READY':     this.setState({ videoReady: true }); break;
         case 'COLOUR_UPDATED':  this.setState({ time:    action.colour }); break;
         case 'COLOURS_UPDATED': this.setState({ colours: action.item });   break;
         default:
