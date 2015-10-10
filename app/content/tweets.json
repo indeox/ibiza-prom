@@ -5487,57 +5487,6 @@
     "userProfileImageUrl": "http://pbs.twimg.com/profile_images/1638334391/0c316669-28d3-4e46-9a98-6664fedd15e9_normal.jpg"
   },
   {
-    "id": "626502374048317440",
-    "url": "https://www.twitter.com/socialresolutio/status/626502374048317440",
-    "time": "10:19 PM - 29 Jul 2015",
-    "timestamp": 1438204780000,
-    "text": "Listen to Red and Gold by Ewan Scarlett #np on #SoundCloud\nhttps://t.co/uiLIaY4Ths \n\n@BBCR1 @StuTolan @indemanduk",
-    "username": "@socialresolutio",
-    "lang": "en",
-    "place": {
-      "id": "7ebc196d98b7016e",
-      "url": "https://api.twitter.com/1.1/geo/id/7ebc196d98b7016e.json",
-      "place_type": "city",
-      "name": "Middleton",
-      "full_name": "Middleton, England",
-      "country_code": "GB",
-      "country": "United Kingdom",
-      "contained_within": [],
-      "bounding_box": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -2.925107,
-              54.013754
-            ],
-            [
-              -2.7875835,
-              54.013754
-            ],
-            [
-              -2.7875835,
-              54.0818374
-            ],
-            [
-              -2.925107,
-              54.0818374
-            ]
-          ]
-        ]
-      },
-      "attributes": {}
-    },
-    "geo": null,
-    "hashtags": [
-      "np",
-      "SoundCloud"
-    ],
-    "userName": "Christopher Sharkey",
-    "userScreenName": "socialresolutio",
-    "userProfileImageUrl": "http://pbs.twimg.com/profile_images/607300986001096704/WonRzrWO_normal.jpg"
-  },
-  {
     "id": "626502403915911168",
     "url": "https://www.twitter.com/ReiGreen5/status/626502403915911168",
     "time": "10:19 PM - 29 Jul 2015",
@@ -5977,21 +5926,6 @@
     "userName": "BeC",
     "userScreenName": "BeClever",
     "userProfileImageUrl": "http://pbs.twimg.com/profile_images/566544826330787840/3EimWeHD_normal.jpeg"
-  },
-  {
-    "id": "626502540021075968",
-    "url": "https://www.twitter.com/Mrkalman/status/626502540021075968",
-    "time": "10:20 PM - 29 Jul 2015",
-    "timestamp": 1438204820000,
-    "text": "Symphony No. 41 in C major 'Jupiter' - BBC Proms - YouTube https://t.co/s8VHeO2Cpq",
-    "username": "@Mrkalman",
-    "lang": "en",
-    "place": null,
-    "geo": null,
-    "hashtags": [],
-    "userName": "Kevin Goheen",
-    "userScreenName": "Mrkalman",
-    "userProfileImageUrl": "http://pbs.twimg.com/profile_images/454400642878935040/JopIcKlB_normal.jpeg"
   },
   {
     "id": "626502565426012160",
