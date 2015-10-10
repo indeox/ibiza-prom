@@ -74,7 +74,7 @@ export default class Body extends React.Component {
 
         <div className={styles.intro} style={{ display: this.state.hasStarted == true ? 'none' : 'block' }}>
           <p>On July 29th 2015, for the BBC Proms season, <a href="http://www.bbc.co.uk/radio1" target="_new">Radio 1</a> celebrated their 20 year association with Ibiza by enlisting the <a href="http://www.theheritageorchestra.com/" target="_new">Heritage Orchestra</a> to play over twenty classic club tracks for their first night out at the Proms, turning the Royal Albert Hall into one giant nightclub and throwing the poshest rave in London.</p>
-          <p>This is an experimental hack to replay the concert, in sync with all the tweets published on that evening.</p>
+          <p>This is an experimental hack to replay the concert, in sync with all the tweets published on that evening. <em>Best viewed on larger screens. While it works on mobile, it's not an optimal experience.</em></p>
           <p>Hit <strong>Play</strong> below to kick it off.</p>
 
           <button className={styles.startbutton} style={startButtonStyle} onClick={this.start}>
