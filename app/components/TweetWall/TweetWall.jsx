@@ -57,7 +57,7 @@ export default class TweetWall extends React.Component {
       		<a target="_blank" href={tweet.url} style={{color:tweetColour}}>
             {media}
             <div className={styles.tweetMeta}>
-              {{ /*<img className={styles.userimage} src={tweet.userProfileImageUrl} /> */ }}
+              { /*<img className={styles.userimage} src={tweet.userProfileImageUrl} /> */ }
               <span className={styles.content} dangerouslySetInnerHTML={{__html: tweet.text}}></span>
             </div>
 

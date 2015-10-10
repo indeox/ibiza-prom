@@ -70,6 +70,8 @@ export default class Mesh extends React.Component {
   }
 
   animateLightTo(colour) {
+    if (!this.light) { return; }
+
     var currentLightColour = this.light.diffuse.format();
     this.finalLightColour  = this.props.colour;
     this.chromaScale = chroma.scale([currentLightColour, this.finalLightColour]);
