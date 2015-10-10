@@ -7,7 +7,8 @@ var scm = new ColorScheme;
 
 class ColoursStore extends BaseStore {
 
-  _cache: [];
+  _cache = [];
+  _schemeCache = {};
 
   emitChange() {
     this.emit('COLOURS_UPDATED');
@@ -33,14 +34,18 @@ class ColoursStore extends BaseStore {
     var colourHex = this.getColourForTime(time);
     if (!colourHex) { return; }
 
-    return scm.from_hex(colourHex.substr(1))
-              .distance(0.1)
-              .scheme('triade')
-              .variation('light')
-              .colors()
-              .map(function(colourHex) {
-                return '#' + colourHex
-              });
+    colourHex = colourHex.substr(1);
+
+    this._schemeCache[colourHex] = this._schemeCache[colourHex] || scm.from_hex(colourHex)
+                                                                    .distance(0.1)
+                                                                    .scheme('triade')
+                                                                    .variation('light')
+                                                                    .colors()
+                                                                    .map(function(colourHex) {
+                                                                      return '#' + colourHex
+                                                                    });
+
+    return this._schemeCache[colourHex];
   }
 }
 
