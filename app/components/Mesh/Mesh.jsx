@@ -31,7 +31,7 @@ export default class Mesh extends React.Component {
       this.renderer = new FSS.CanvasRenderer();
       this.scene    = new FSS.Scene();
       this.light    = new FSS.Light('#880066', this.props.colour);
-      this.geometry = new FSS.Plane(this.container.offsetWidth, this.container.offsetHeight, 12, 10);
+      this.geometry = new FSS.Plane(window.innerWidth + 30, window.innerHeight + 30, 12, 10);
       this.material = new FSS.Material('#555555', '#ffffff');
       this.mesh     = new FSS.Mesh(this.geometry, this.material);
       this.now      = Date.now();
@@ -39,6 +39,7 @@ export default class Mesh extends React.Component {
 
       this.light.ambient.set('#333333');
       this.light.setPosition(-this.container.offsetWidth/3, this.container.offsetHeight/2, 1000);
+      //this.mesh.setPosition(90,20);
       this.scene.add(this.mesh);
       this.scene.add(this.light);
 
@@ -70,7 +71,7 @@ export default class Mesh extends React.Component {
   }
 
   resize = () => {
-    this.renderer.setSize(this.container.offsetWidth, this.container.offsetHeight);
+    this.renderer.setSize(window.innerWidth, window.innerHeight);
   }
 
   animateLightTo(colour) {

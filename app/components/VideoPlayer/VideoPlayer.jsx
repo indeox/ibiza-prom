@@ -32,7 +32,7 @@ export default class VideoPlayer extends Component {
 
   }
 
-  onPlayerReady() {
+  onPlayerReady = () => {
     AppActions.videoReady();
   }
 

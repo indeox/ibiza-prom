@@ -58,7 +58,8 @@ export default class Body extends React.Component {
     }
 
     var videoContainerStyle = {
-      visibility: this.state.hasStarted == true ? 'visible' : 'hidden'
+      visibility: this.state.hasStarted == true ? 'visible' : 'hidden',
+      position:   this.state.hasStarted == true ? 'static'  : 'absolute'
     };
 
     // var trackInfoStyle = {
