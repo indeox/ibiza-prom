@@ -63,13 +63,15 @@ export default class VideoPlayer extends Component {
       }, 250)
     }
 
-    if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED|| event.data == YT.PlayerState.UNSTARTED) {
-      if (this.interval) {
-        clearInterval(this.interval);
-      }
-
+    if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED) {
       if (!this.videoAtStart) {
         this.player.seekTo(0);
+      }
+    }
+
+    if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED || event.data == YT.PlayerState.UNSTARTED) {
+      if (this.interval) {
+        clearInterval(this.interval);
       }
     }
   }
