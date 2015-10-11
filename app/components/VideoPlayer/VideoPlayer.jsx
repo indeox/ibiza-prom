@@ -39,6 +39,7 @@ export default class VideoPlayer extends Component {
     this.player.seekTo(0);
 
     setTimeout(() => {
+      this.videoAtStart = true;
       this.player.setVolume(100);
       AppActions.videoReady();
     }, 10 * 1000);
@@ -62,7 +63,7 @@ export default class VideoPlayer extends Component {
       }, 250)
     }
 
-    if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED) {
+    if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED|| event.data == YT.PlayerState.UNSTARTED) {
       if (this.interval) {
         clearInterval(this.interval);
       }

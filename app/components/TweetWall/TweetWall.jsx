@@ -34,13 +34,13 @@ export default class TweetWall extends React.Component {
     var tweetsAtCurrentTime = this.getTweetsAt(promLocalTime);
 
     // First run - populate tweetsToRender
-    if (tweetsAtCurrentTime.length || this.tweetsToRender.length === 0) {
+    if (tweetsAtCurrentTime.length && this.tweetsToRender.length === 0) {
       this.tweetsToRender = tweetsAtCurrentTime;
       return true;
     }
 
     // Force an update if the top tweet doesn't match what's already rendered
-    if (tweetsAtCurrentTime[0].id != this.tweetsToRender[0].id) {
+    if (this.tweetsToRender.length && tweetsAtCurrentTime[0].id != this.tweetsToRender[0].id) {
       this.tweetsToRender = tweetsAtCurrentTime;
       return true;
     }

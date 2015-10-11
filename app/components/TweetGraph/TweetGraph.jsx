@@ -26,20 +26,8 @@ export default class TweetGraph extends React.Component {
     this.timeMarker = this.container.querySelector('.' + styles.marker);
   }
 
-  componentDidUpdate() {
-    // console.log(this.timeMarker.getBoundingClientRect());
-  }
-
-  componentWillReceiveProps(props) {
-
-  }
-
-  getTweetsAt(timestamp) {
-    var tweets = this.props.tweets.filter(function(tweet) {
-      return tweet.timestamp <= timestamp && tweet.timestamp >= timestamp - 2 * 60000;
-    });
-
-    return tweets.reverse().slice(0,15);
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.props.time == 0 || Math.floor(this.props.time) !== Math.floor(nextProps.time);
   }
 
   jumpToTime = (e) => {
