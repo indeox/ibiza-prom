@@ -33,6 +33,11 @@ export default class TweetWall extends React.Component {
     var promLocalTime       = this.props.promStart + (this.props.time * 1000);
     var tweetsAtCurrentTime = this.getTweetsAt(promLocalTime);
 
+    // Update on colour change
+    if (this.props.colourScheme.toString() != nextProps.colourScheme.toString()) {
+      return true;
+    }
+
     // First run - populate tweetsToRender
     if (tweetsAtCurrentTime.length && this.tweetsToRender.length === 0) {
       this.tweetsToRender = tweetsAtCurrentTime;
