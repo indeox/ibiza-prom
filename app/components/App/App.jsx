@@ -14,6 +14,9 @@ import Body from '../Body/Body';
 import Footer from '../Footer/Footer';
 import Mesh from '../Mesh/Mesh';
 
+// import addons from 'react/addons';
+// const Perf = React.addons.Perf;
+
 const promStart = moment('2015-07-29 22:17:00+0100').valueOf();
 
 function getAppState() {

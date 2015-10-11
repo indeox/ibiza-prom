@@ -16,6 +16,8 @@ export default class TweetWall extends React.Component {
     time:         0
   }
 
+  tweetsToRender = [];
+
   getTweetsAt(timestamp) {
     var self = this;
     var tweets = this.props.tweets.filter(function(tweet) {
@@ -27,12 +29,29 @@ export default class TweetWall extends React.Component {
     return tweets.reverse().slice(0, this.props.maxTweets);
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    var promLocalTime       = this.props.promStart + (this.props.time * 1000);
+    var tweetsAtCurrentTime = this.getTweetsAt(promLocalTime);
+
+    // First run - populate tweetsToRender
+    if (tweetsAtCurrentTime.length || this.tweetsToRender.length === 0) {
+      this.tweetsToRender = tweetsAtCurrentTime;
+      return true;
+    }
+
+    // Force an update if the top tweet doesn't match what's already rendered
+    if (tweetsAtCurrentTime[0].id != this.tweetsToRender[0].id) {
+      this.tweetsToRender = tweetsAtCurrentTime;
+      return true;
+    }
+
+    return false;
+  }
+
   render() {
     var self = this;
-  	var promLocalTime = this.props.promStart + (this.props.time * 1000);
-    var numTweets     = this.props.tweets.length;
 
-	  var tweets = this.getTweetsAt(promLocalTime).map(function(tweet, index) {
+	  var tweets = this.tweetsToRender.map(function(tweet, index) {
       var media;
       var mediaIcon;
       var tweetColour = self.props.colourScheme[tweet.colourIndex];

@@ -6,18 +6,17 @@ import _ from 'lodash';
 export default class Sparklines extends React.Component {
 
   static defaultProps = {
-    colourScheme: [],
-    data:         [],
-    barWidth:     1
+    colour:   '#ffffff',
+    tweets:   [],
+    width:    1000,
+    height:   40,
+    barWidth: 1
   }
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      tweetGraph: [],
-      width:      0,
-      height:     40,
-    };
+  state = {
+    tweetGraph: [],
+    width:      1000,
+    height:     40
   }
 
   componentDidMount() {
@@ -32,6 +31,10 @@ export default class Sparklines extends React.Component {
     if (this.props.tweets != prevProps.tweets) {
       this.processTweets()
     }
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.props.colour !== nextProps.colour || this.props.tweets.length != nextProps.tweets.length;
   }
 
   processTweets = () => {
