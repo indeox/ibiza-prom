@@ -6,6 +6,9 @@ This is an experimental React app, that syncs up BBC's Radio 1 [Ibiza Prom](http
 To run:
 ```npm start```
 
+To build project in _/build_:
+```npm run build```
+
 ![Screenshot](docs/screenshot.jpg)
 
 Project is based off the [React seed](https://github.com/badsyntax/react-seed) boilerplate.
