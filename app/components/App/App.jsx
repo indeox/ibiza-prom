@@ -49,6 +49,7 @@ export default class App extends React.Component {
     AppDispatcher.register((action) => {
       switch(action.actionType) {
         case 'TIME_UPDATED':
+          // Perf.start();
           this.setState({
             time:          action.time,
             lightsOn:      action.time > 3.1,
@@ -58,6 +59,8 @@ export default class App extends React.Component {
             colourScheme:  ColoursStore.getColourSchemeForTime(action.time),
             track:         TrackStore.getTrackAt(action.time)
           });
+          // Perf.stop();
+          // Perf.printWasted();
         break;
         case 'VIDEO_READY':     this.setState({ videoReady: true }); break;
         case 'COLOUR_UPDATED':  this.setState({ time:    action.colour }); break;
