@@ -30,8 +30,8 @@ export default class Body extends React.Component {
     AppActions.jumpVideoTo(0);
   }
 
-  componentWillUpdate(nextProps, nextState) {
-
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.props.time == 0 || Math.floor(this.props.time) !== Math.floor(nextProps.time);
   }
 
   render() {

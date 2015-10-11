@@ -70,6 +70,10 @@ export default class Mesh extends React.Component {
     }
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.props.colour !== nextProps.colour;
+  }
+
   resize = () => {
     this.renderer.setSize(window.innerWidth, window.innerHeight);
   }
