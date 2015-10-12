@@ -1,12 +1,11 @@
 import styles from './_Body.scss';
-import React from 'react';
+import React  from 'react';
 import moment from 'moment';
 
-import Menu from '../Menu/Menu';
 import VideoPlayer from '../VideoPlayer/VideoPlayer';
 import TweetWall   from '../TweetWall/TweetWall';
 import TweetGraph  from '../TweetGraph/TweetGraph';
-import AppActions from '../../actions/AppActions';
+import AppActions  from '../../actions/AppActions';
 
 let { PropTypes } = React;
 
@@ -28,10 +27,6 @@ export default class Body extends React.Component {
   start = () => {
     this.setState({ hasStarted: true });
     AppActions.jumpVideoTo(0);
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    return this.props.time == 0 || Math.floor(this.props.time) !== Math.floor(nextProps.time);
   }
 
   render() {
