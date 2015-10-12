@@ -31,14 +31,14 @@ export default class Mesh extends React.Component {
       this.renderer = new FSS.CanvasRenderer();
       this.scene    = new FSS.Scene();
       this.light    = new FSS.Light('#880066', this.props.colour);
-      this.geometry = new FSS.Plane(window.innerWidth + 30, window.innerHeight + 30, 12, 10);
+      this.geometry = new FSS.Plane(window.innerWidth + 60, window.innerHeight + 30, 8, 6);
       this.material = new FSS.Material('#555555', '#ffffff');
       this.mesh     = new FSS.Mesh(this.geometry, this.material);
       this.now      = Date.now();
       this.start    = Date.now();
 
-      this.light.ambient.set('#333333');
-      this.light.setPosition(-this.container.offsetWidth/3, this.container.offsetHeight/2, 1000);
+      this.light.ambient.set('#880066');
+      this.light.setPosition(0, this.container.offsetHeight/2, 300);
       //this.mesh.setPosition(90,20);
       this.scene.add(this.mesh);
       this.scene.add(this.light);
@@ -65,7 +65,7 @@ export default class Mesh extends React.Component {
   componentDidUpdate(newProps) {
     // this.light.diffuse.set(this.props.colour);
     if (this.props.colour !== this.finalLightColour) {
-      newProps.colour = chroma(newProps.colour).brighten().hex();
+      newProps.colour = chroma(newProps.colour).brighten(1).hex();
       this.animateLightTo(newProps.colour);
     }
   }
@@ -100,7 +100,9 @@ export default class Mesh extends React.Component {
 
     this.renderer.render(this.scene);
     // requestAnimationFrame(this.animate);
-    setTimeout(this.animate, this.props.meshUpdateInMs);
+    setTimeout(() => {
+      requestAnimationFrame(this.animate);
+    }, this.props.meshUpdateInMs);
   }
 
   tweakMesh() {
