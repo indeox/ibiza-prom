@@ -39,7 +39,6 @@ export default class VideoPlayer extends Component {
     this.player.seekTo(0);
 
     setTimeout(() => {
-      this.videoAtStart = true;
       this.player.setVolume(100);
       AppActions.videoReady();
     }, 10 * 1000);
