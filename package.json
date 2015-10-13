@@ -1,6 +1,6 @@
 {
   "name": "ibiza-prom",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Replay of the BBC Radio1 Ibiza Prom",
   "config": {
     "buildDir": "./build",
