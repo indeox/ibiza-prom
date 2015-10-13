@@ -31,7 +31,7 @@ export default class Mesh extends React.Component {
       this.renderer = new FSS.CanvasRenderer();
       this.scene    = new FSS.Scene();
       this.light    = new FSS.Light('#880066', this.props.colour);
-      this.geometry = new FSS.Plane(window.innerWidth + 60, window.innerHeight + 30, 8, 6);
+      this.geometry = new FSS.Plane(window.innerWidth + 60, window.innerHeight + 30, 12, 10);
       this.material = new FSS.Material('#555555', '#ffffff');
       this.mesh     = new FSS.Mesh(this.geometry, this.material);
       this.now      = Date.now();
