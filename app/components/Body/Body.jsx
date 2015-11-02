@@ -63,7 +63,10 @@ export default class Body extends React.Component {
 
     return (
       <div className={styles.body}>
-        <h1 className={styles.header} style={headerStyle}>#IbizaProm Replay</h1>
+        <h1 className={styles.header} style={headerStyle}>
+          <span className={styles.headerHashtag}>#</span>
+          IbizaProm Replay
+        </h1>
 
         <TweetGraph {...this.props} active={this.state.hasStarted} />
 
