@@ -78,7 +78,7 @@ export default class TweetWall extends React.Component {
       // Render Tweet
       return (
       	<li className={styles.tweet} key={tweet.id}>
-      		<a target="_blank" href={tweet.url} style={{color:tweetColour}}>
+      		<a target="_blank" href={tweet.url} className={'color-' + tweet.colourIndex}>
             {media}
             <div className={styles.tweetMeta}>
               { /*<img className={styles.userimage} src={tweet.userProfileImageUrl} /> */ }

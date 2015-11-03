@@ -31,7 +31,6 @@ export default class Body extends React.Component {
 
   render() {
     var headerStyle = {
-      color:     this.props.colourScheme[4],
       textAlign: this.props.promProgress > 31 ? 'left' : 'right'
     };
 
@@ -63,7 +62,7 @@ export default class Body extends React.Component {
 
     return (
       <div className={styles.body}>
-        <h1 className={styles.header} style={headerStyle}>
+        <h1 className={styles.header + ' color-4'} style={headerStyle}>
           <span className={styles.headerHashtag}>#</span>
           IbizaProm Replay
         </h1>
@@ -84,8 +83,8 @@ export default class Body extends React.Component {
           <VideoPlayer/>
 
           <div className={styles.description}>
-            <p><i className="fa fa-info-circle"></i> This is an experimental hack, attempting to synchronise the Radio 1 Ibiza Prom with the tweets of the night, exactly as they happened.</p>
-            <p>It was made purely for the fun of it, and as a proof of concept, it may sometimes behave erratically. If all fails, you can still enjoy the fantastic gig for what it was. Any comments, fire them at <a href="https://twitter.com/indeox" target="_new" style={highlightStyle}>@indeox</a></p>
+            <p><i className="fa fa-info-circle"></i> This is an experimental music hack, synchronising the Radio 1 Ibiza Prom with the live tweets of the night. The project is just a proof of concept, made for fun, so there's no guarantees it will always work.</p>
+            <p>If all fails, you can still enjoy the fantastic gig for what it was. Any comments, fire them at <a href="https://twitter.com/indeox" target="_new" style={highlightStyle}>@indeox</a></p>
           </div>
           {
             /*<h2 className={styles.track} style={trackInfoStyle}>{this.props.track.title}</h2>

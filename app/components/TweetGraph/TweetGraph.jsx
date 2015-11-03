@@ -48,14 +48,14 @@ export default class TweetGraph extends React.Component {
     var progress      = (this.props.time / 5531) * 100;
 
     var graphStyle = {
-      //backgroundColor:   backgroundRGB.css(),
-      borderTopColor:    this.props.colourScheme[5],
-      borderBottomColor: this.props.colourScheme[5],
+      // backgroundColor:   backgroundRGB.css(),
+      // borderTopColor:    this.props.colourScheme[5],
+      // borderBottomColor: this.props.colourScheme[5],
     }
 
     // Prom time horizontal position
     if (this.promTime) {
-      var promTimeWidth = this.promTime.getBoundingClientRect().width;
+      var promTimeWidth = 95; //this.promTime.getBoundingClientRect().width;
       var markerX       = this.timeMarker.getBoundingClientRect().left;
       var isPastLeftBoundary  = markerX - (promTimeWidth/2) <= 0;
       var isPastRightBoundary = markerX + (promTimeWidth/2) >= window.innerWidth;

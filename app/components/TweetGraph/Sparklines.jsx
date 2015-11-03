@@ -72,13 +72,17 @@ export default class Sparklines extends React.Component {
     };
 
     return (
-      <svg className={styles.sparklines}>
-        {this.state.tweetGraph.map((bar, i) => {
-          var barHeight = (bar / this.state.maxValue) * this.state.height;
-          var yPos      = this.state.height - barHeight;
-          return <rect key={i} className={styles.bar} x={i*(this.props.barWidth+1)} y={yPos} width={this.props.barWidth} height={barHeight} style={rectStyle}></rect>
-        })}
-      </svg>
+      <div>
+        <style dangerouslySetInnerHTML={{__html: 'rect { fill: ' + this.props.colour + ' }'}} />
+
+        <svg className={styles.sparklines}>
+          {this.state.tweetGraph.map((bar, i) => {
+            var barHeight = (bar / this.state.maxValue) * this.state.height;
+            var yPos      = this.state.height - barHeight;
+            return <rect key={i} className={styles.bar} x={i*(this.props.barWidth+1)} y={yPos} width={this.props.barWidth} height={barHeight}></rect>
+          })}
+        </svg>
+      </div>
     );
   }
 }

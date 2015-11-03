@@ -59,7 +59,7 @@ export default class VideoPlayer extends Component {
 
       this.interval = setInterval(() => {
         AppActions.setTime(this.player.getCurrentTime());
-      }, 250)
+      }, 500)
     }
 
     if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED) {
