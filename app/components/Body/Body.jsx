@@ -78,8 +78,7 @@ export default class Body extends React.Component {
           <VideoPlayer/>
 
           <div className={styles.description}>
-            <p><i className="fa fa-info-circle"></i> This is an experimental music hack, synchronising the Radio 1 Ibiza Prom with the live tweets of the night. The project is just a proof of concept, made for fun, so there's no guarantees it will always work.</p>
-            <p>If all fails, you can still enjoy the fantastic gig for what it was. Any comments, fire them at <a href="https://twitter.com/indeox" target="_new" className="color-4">@indeox</a></p>
+            <p><i className="fa fa-info-circle"></i> This is an experimental music hack, synchronising the Radio 1 Ibiza Prom with the live tweets of the night. The project is a proof of concept, made for fun, so there may be bugs. If all fails, you can still enjoy the fantastic gig for what it was. Any comments, fire them at <a href="https://twitter.com/indeox" target="_new" className="color-4">@indeox</a></p>
           </div>
           {
             /*<h2 className={styles.track} style={trackInfoStyle}>{this.props.track.title}</h2>
