@@ -2,6 +2,7 @@ import styles from './_Mesh.scss';
 import React  from 'react';
 import chroma from 'chroma-js';
 import favicolor from 'favicolor';
+import _ from 'lodash';
 
 let { PropTypes } = React;
 
@@ -21,6 +22,12 @@ export default class Mesh extends React.Component {
     items: PropTypes.string
   };
 
+  constructor() {
+    super();
+
+    this.resize = _.debounce(this.resize, 500).bind(this);
+  }
+
   componentDidMount() {
     // Needs setTimeout as offsetWidth/offsetHeight seem to be
     // getting the wrong dimensions on pageload
@@ -29,32 +36,13 @@ export default class Mesh extends React.Component {
       this.faviconEl = document.querySelector('[rel=icon]');
 
       this.renderer = new FSS.CanvasRenderer();
-      this.scene    = new FSS.Scene();
-      this.light    = new FSS.Light('#880066', this.props.colour);
-      this.geometry = new FSS.Plane(window.innerWidth + 60, window.innerHeight + 30, 12, 10);
-      this.material = new FSS.Material('#555555', '#ffffff');
-      this.mesh     = new FSS.Mesh(this.geometry, this.material);
-      this.now      = Date.now();
-      this.start    = Date.now();
+      this.buildScene();
+      this.container.appendChild(this.renderer.element);
 
-      this.light.ambient.set('#880066');
-      this.light.setPosition(0, this.container.offsetHeight/2, 300);
-      //this.mesh.setPosition(90,20);
-      this.scene.add(this.mesh);
-      this.scene.add(this.light);
-
-      this.finalLightColour = this.light.diffuse.hex;
-      this.chromaScale = chroma.scale([this.finalLightColour, this.finalLightColour]);
-      this.chromaStep  = 0;
+      window.addEventListener('resize', this.resize);
 
       window.mesh = this;
-
-      this.container.appendChild(this.renderer.element);
-      window.addEventListener('resize', this.resize);
       window.light = this.light;
-
-      this.resize();
-      this.tweakMesh();
 
       if (!this.props.simpleMode) {
         this.animate();
@@ -74,7 +62,33 @@ export default class Mesh extends React.Component {
     return this.props.colour !== nextProps.colour;
   }
 
+  buildScene = () => {
+    delete this.scene;
+    this.renderer.setSize(window.innerWidth, window.innerHeight);
+
+    this.scene    = new FSS.Scene();
+    this.light    = new FSS.Light('#880066', this.props.colour);
+    this.geometry = new FSS.Plane(window.innerWidth + 60, window.innerHeight + 30, 12, 10);
+    this.material = new FSS.Material('#555555', '#ffffff');
+    this.mesh     = new FSS.Mesh(this.geometry, this.material);
+    this.now      = Date.now();
+    this.start    = Date.now();
+
+    this.light.ambient.set('#880066');
+    this.light.setPosition(0, this.container.offsetHeight/2, 300);
+    //this.mesh.setPosition(90,20);
+    this.scene.add(this.mesh);
+    this.scene.add(this.light);
+
+    this.finalLightColour = this.light.diffuse.hex;
+    this.chromaScale = chroma.scale([this.finalLightColour, this.finalLightColour]);
+    this.chromaStep  = 0;
+
+    this.tweakMesh();
+  }
+
   resize = () => {
+    this.buildScene();
     this.renderer.setSize(window.innerWidth, window.innerHeight);
   }
 
@@ -99,10 +113,12 @@ export default class Mesh extends React.Component {
     this.chromaStep += (this.props.meshUpdateInMs/1000);
 
     this.renderer.render(this.scene);
-    // requestAnimationFrame(this.animate);
-    setTimeout(() => {
-      requestAnimationFrame(this.animate);
-    }, this.props.meshUpdateInMs);
+
+    requestAnimationFrame(this.animate);
+
+    // setTimeout(() => {
+    //   requestAnimationFrame(this.animate);
+    // }, this.props.meshUpdateInMs);
   }
 
   tweakMesh() {
@@ -147,9 +163,7 @@ export default class Mesh extends React.Component {
 
   render() {
     return (
-      <div className={styles.mesh} style={{backgroundColor: this.finalLightColour}}>
-
-      </div>
+      <div className={styles.mesh + ' bg-primary'} />
     );
   }
 }
