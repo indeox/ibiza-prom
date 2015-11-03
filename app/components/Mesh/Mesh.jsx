@@ -100,7 +100,7 @@ export default class Mesh extends React.Component {
     this.chromaScale = chroma.scale([currentLightColour, this.finalLightColour]);
     this.chromaStep  = 0;
 
-    favicolor(this.faviconEl, this.finalLightColour);
+    // favicolor(this.faviconEl, this.finalLightColour);
   }
 
   animate = () => {
@@ -114,11 +114,11 @@ export default class Mesh extends React.Component {
 
     this.renderer.render(this.scene);
 
-    requestAnimationFrame(this.animate);
+    // requestAnimationFrame(this.animate);
 
-    // setTimeout(() => {
-    //   requestAnimationFrame(this.animate);
-    // }, this.props.meshUpdateInMs);
+    setTimeout(() => {
+      requestAnimationFrame(this.animate);
+    }, this.props.meshUpdateInMs);
   }
 
   tweakMesh() {
