@@ -122,9 +122,7 @@ export default class App extends React.Component {
 
     return (
       <div className={styles.app}>
-        <style>
-          {styleSheet}
-        </style>
+        <style dangerouslySetInnerHTML={{__html: styleSheet}} />
 
         <Mesh colour={this.state.primaryColour} />
         <Body {...this.state}/>

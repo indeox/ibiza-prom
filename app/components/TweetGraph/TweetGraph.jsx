@@ -21,7 +21,7 @@ export default class TweetGraph extends React.Component {
   }
 
   componentDidMount() {
-    this.container = React.findDOMNode(this);
+    this.container  = React.findDOMNode(this);
     this.promTime   = this.container.querySelector('.' + styles.promtime);
     this.timeMarker = this.container.querySelector('.' + styles.marker);
   }
@@ -86,7 +86,7 @@ export default class TweetGraph extends React.Component {
     return (
       <div className={styles.graph} onClick={this.jumpToTime}>
         <div className={styles.promtime + ' color-primary bg-4'} style={promTimeStyle}>
-          {promPrettyTime}
+          <span dangerouslySetInnerHTML={{__html: promPrettyTime}} />
         </div>
 
         <Sparklines colour={sparkLinesStyle.fill} tweets={this.props.tweets} width={1000} height={40} />
