@@ -47,11 +47,8 @@ export default class TweetGraph extends React.Component {
     var backgroundRGB = chroma.hex(this.props.colourScheme[5] || '#ffffff').alpha(0.25);
     var progress      = (this.props.time / 5531) * 100;
 
-    var graphStyle = {
-      // backgroundColor:   backgroundRGB.css(),
-      // borderTopColor:    this.props.colourScheme[5],
-      // borderBottomColor: this.props.colourScheme[5],
-    }
+    // Round progress to 1 decimal point
+    progress = _.round(progress, 1);
 
     // Prom time horizontal position
     if (this.promTime) {
@@ -66,10 +63,7 @@ export default class TweetGraph extends React.Component {
     else if (progress > 95.1) { promTimePosition = 95.1; }
 
     var promTimeStyle = {
-      color:           this.props.primaryColour,
-      backgroundColor: this.props.colourScheme[4],
-      left:            promTimePosition + '%',
-      marginLeft:      null
+      left: promTimePosition + '%',
     }
 
     if (isPastLeftBoundary)  { promTimeStyle.left = 0; promTimeStyle.marginLeft = 0; }
@@ -78,8 +72,7 @@ export default class TweetGraph extends React.Component {
     var promPrettyTime = moment(this.props.promLocalTime).utcOffset(1).format('hh:mm:ssa');
 
     var markerStyle = {
-      backgroundColor: this.props.colourScheme[4],
-      left:            progress + '%'
+      left: progress + '%'
     }
 
     var sparkLinesStyle = {
@@ -90,12 +83,14 @@ export default class TweetGraph extends React.Component {
     }
 
     return (
-      <div className={styles.graph} style={graphStyle} onClick={this.jumpToTime}>
-        <div className={styles.promtime} style={promTimeStyle}>{promPrettyTime}</div>
+      <div className={styles.graph} onClick={this.jumpToTime}>
+        <div className={styles.promtime + ' color-primary bg-4'} style={promTimeStyle}>
+          {promPrettyTime}
+        </div>
 
         <Sparklines colour={sparkLinesStyle.fill} tweets={this.props.tweets} width={1000} height={40} />
 
-        <div className={styles.marker} style={markerStyle}/>
+        <div className={styles.marker + ' bg-4'} style={markerStyle}/>
       </div>
     );
   }
