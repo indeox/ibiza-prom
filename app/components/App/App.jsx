@@ -86,11 +86,41 @@ export default class App extends React.Component {
   }
 
   render() {
+    var styleSheet = `
+      .color-primary  { color: ${this.state.primaryColour};   }
+      .color-0        { color: ${this.state.colourScheme[0]}; }
+      .color-1        { color: ${this.state.colourScheme[1]}; }
+      .color-2        { color: ${this.state.colourScheme[2]}; }
+      .color-3        { color: ${this.state.colourScheme[3]}; }
+      .color-4        { color: ${this.state.colourScheme[4]}; }
+      .color-5        { color: ${this.state.colourScheme[5]}; }
+      .color-6        { color: ${this.state.colourScheme[6]}; }
+      .color-7        { color: ${this.state.colourScheme[7]}; }
+      .color-8        { color: ${this.state.colourScheme[8]}; }
+      .color-9        { color: ${this.state.colourScheme[9]}; }
+      .bg-primary     { background-color: ${this.state.primaryColour}; }
+      .bg-0           { background-color: ${this.state.colourScheme[0]}; }
+      .bg-1           { background-color: ${this.state.colourScheme[1]}; }
+      .bg-2           { background-color: ${this.state.colourScheme[2]}; }
+      .bg-3           { background-color: ${this.state.colourScheme[3]}; }
+      .bg-4           { background-color: ${this.state.colourScheme[4]}; }
+      .border-primary { border-color: ${this.state.primaryColour};   }
+      .border-0       { border-color: ${this.state.colourScheme[0]}; }
+      .border-1       { border-color: ${this.state.colourScheme[1]}; }
+      .border-2       { border-color: ${this.state.colourScheme[2]}; }
+      .border-3       { border-color: ${this.state.colourScheme[3]}; }
+      .border-4       { border-color: ${this.state.colourScheme[4]}; }
+    `;
+
     return (
       <div className={styles.app}>
+        <style>
+          {styleSheet}
+        </style>
+
         <Mesh colour={this.state.primaryColour} />
         <Body {...this.state}/>
-        { /*<Footer />*/ }
+        {/* <Footer /> */}
       </div>
     );
   }
