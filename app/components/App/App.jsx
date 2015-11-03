@@ -14,8 +14,10 @@ import Body from '../Body/Body';
 import Footer from '../Footer/Footer';
 import Mesh from '../Mesh/Mesh';
 
+
 // import addons from 'react/addons';
 // const Perf = React.addons.Perf;
+const profilingEnabled = false;
 
 const promStart = moment('2015-07-29 22:17:00+0100').valueOf();
 
@@ -49,7 +51,10 @@ export default class App extends React.Component {
     AppDispatcher.register((action) => {
       switch(action.actionType) {
         case 'TIME_UPDATED':
-          // Perf.start();
+          if (profilingEnabled) {
+            Perf.start();
+          }
+
           this.setState({
             time:          action.time,
             lightsOn:      action.time > 3.1,
@@ -59,8 +64,11 @@ export default class App extends React.Component {
             colourScheme:  ColoursStore.getColourSchemeForTime(action.time),
             track:         TrackStore.getTrackAt(action.time)
           });
-          // Perf.stop();
-          // Perf.printWasted();
+
+          if (profilingEnabled) {
+            Perf.stop();
+            Perf.printWasted();
+          }
         break;
         case 'VIDEO_READY':     this.setState({ videoReady: true }); break;
         case 'COLOUR_UPDATED':  this.setState({ time:    action.colour }); break;
