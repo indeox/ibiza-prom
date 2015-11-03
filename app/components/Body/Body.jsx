@@ -34,8 +34,6 @@ export default class Body extends React.Component {
       textAlign: this.props.promProgress > 31 ? 'left' : 'right'
     };
 
-    var promPrettyTime = moment(this.props.state.promLocalTime).utcOffset(1).format('hh:mm:ssa');
-
     var startButtonStyle = {
       opacity: this.props.videoReady ? 1 : 0.3
     };
@@ -58,8 +56,9 @@ export default class Body extends React.Component {
     return (
       <div className={styles.body}>
         <h1 className={styles.header + ' color-4'} style={headerStyle}>
-          <span className={styles.headerHashtag}>#</span>
-          IbizaProm Replay
+          <span className={styles.headerFade}>#</span>
+          IbizaProm
+          <span className={styles.headerFade}>Replay</span>
         </h1>
 
         <TweetGraph {...this.props} active={this.state.hasStarted} />

@@ -52,7 +52,7 @@ export default class TweetGraph extends React.Component {
 
     // Prom time horizontal position
     if (this.promTime) {
-      var promTimeWidth = 95; //this.promTime.getBoundingClientRect().width;
+      var promTimeWidth = 80; //this.promTime.getBoundingClientRect().width;
       var markerX       = this.timeMarker.getBoundingClientRect().left;
       var isPastLeftBoundary  = markerX - (promTimeWidth/2) <= 0;
       var isPastRightBoundary = markerX + (promTimeWidth/2) >= window.innerWidth;
@@ -63,7 +63,8 @@ export default class TweetGraph extends React.Component {
     else if (progress > 95.1) { promTimePosition = 95.1; }
 
     var promTimeStyle = {
-      left: promTimePosition + '%',
+      left:       promTimePosition + '%',
+      marginLeft: -promTimeWidth / 2
     }
 
     if (isPastLeftBoundary)  { promTimeStyle.left = 0; promTimeStyle.marginLeft = 0; }
@@ -72,7 +73,7 @@ export default class TweetGraph extends React.Component {
     var promPrettyTime = moment(this.props.promLocalTime).utcOffset(1).format('hh:mm:ssa');
 
     var markerStyle = {
-      left: progress + '%'
+      left:       progress + '%'
     }
 
     var sparkLinesStyle = {
