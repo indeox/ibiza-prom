@@ -39,7 +39,7 @@ export default class Sparklines extends React.Component {
 
   processTweets = () => {
     var promDuration = _.max(this.props.tweets, 'timestamp').timestamp - _.min(this.props.tweets, 'timestamp').timestamp; // Total: 5530 seconds
-    var numOfLines   = Math.floor(this.state.width / this.props.barWidth); // 2px for bar width + 1px spacer
+    var numOfLines   = Math.floor(this.state.width / (this.props.barWidth + 1)); // 2px for bar width + 1px spacer
     var barDuration  = Math.floor(promDuration / numOfLines);
 
     var tweetGraph = _(this.props.tweets)
@@ -51,8 +51,6 @@ export default class Sparklines extends React.Component {
       tweetGraph: tweetGraph,
       maxValue:   _.max(tweetGraph)
     });
-
-    // console.log(numOfLines, barDuration, tweetGraph.length);
   }
 
   resize = _.debounce(() => {
@@ -64,6 +62,7 @@ export default class Sparklines extends React.Component {
     });
 
     this.processTweets();
+    this.forceUpdate();
   }, 250)
 
   render() {
@@ -72,10 +71,10 @@ export default class Sparklines extends React.Component {
     };
 
     return (
-      <div>
+      <div className={styles.sparklines}>
         <style dangerouslySetInnerHTML={{__html: 'rect { fill: ' + this.props.colour + ' }'}} />
 
-        <svg className={styles.sparklines}>
+        <svg>
           {this.state.tweetGraph.map((bar, i) => {
             var barHeight = (bar / this.state.maxValue) * this.state.height;
             var yPos      = this.state.height - barHeight;

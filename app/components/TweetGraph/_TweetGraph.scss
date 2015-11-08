@@ -32,9 +32,11 @@
   margin-left: -46px;
 }
 
-.sparklines {
+.sparklines,
+.sparklines svg {
   width: 100%;
   height: 40px;
+
 }
 
 .bar {
