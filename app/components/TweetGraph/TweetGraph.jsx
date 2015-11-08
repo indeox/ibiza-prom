@@ -24,6 +24,7 @@ export default class TweetGraph extends React.Component {
     this.container  = React.findDOMNode(this);
     this.promTime   = this.container.querySelector('.' + styles.promtime);
     this.timeMarker = this.container.querySelector('.' + styles.marker);
+    this.promTimeWidth = this.promTime.getBoundingClientRect().width;
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -46,21 +47,24 @@ export default class TweetGraph extends React.Component {
   render() {
     var backgroundRGB = chroma.hex(this.props.colourScheme[5] || '#ffffff').alpha(0.25);
     var progress      = (this.props.time / 5531) * 100;
+    var isPastLeftBoundary  = false;
+    var isPastRightBoundary = false;
+    var promTimeWidth = 80;
 
     // Round progress to 1 decimal point
     progress = _.round(progress, 1);
 
     // Prom time horizontal position
-    if (this.promTime) {
-      var promTimeWidth = 80; //this.promTime.getBoundingClientRect().width;
-      var markerX       = this.timeMarker.getBoundingClientRect().left;
-      var isPastLeftBoundary  = markerX - (promTimeWidth/2) <= 0;
-      var isPastRightBoundary = markerX + (promTimeWidth/2) >= window.innerWidth;
-    }
+    // if (this.promTime) {
+    //   var promTimeWidth = 80; //this.promTime.getBoundingClientRect().width;
+    //   var markerX       = this.timeMarker.getBoundingClientRect().left;
+    //   var isPastLeftBoundary  = markerX - (promTimeWidth/2) <= 0;
+    //   var isPastRightBoundary = markerX + (promTimeWidth/2) >= window.innerWidth;
+    // }
 
     var promTimePosition = progress;
-    if      (progress < 4.5)  { promTimePosition = 4.0; }
-    else if (progress > 95.1) { promTimePosition = 95.1; }
+    if      (progress < 4.0)  { promTimePosition = 4.0;  isPastLeftBoundary  = true; }
+    else if (progress > 95.1) { promTimePosition = 95.1; isPastRightBoundary = true; }
 
     var promTimeStyle = {
       left:       promTimePosition + '%',
@@ -68,7 +72,7 @@ export default class TweetGraph extends React.Component {
     }
 
     if (isPastLeftBoundary)  { promTimeStyle.left = 0; promTimeStyle.marginLeft = 0; }
-    if (isPastRightBoundary) { promTimeStyle.left = window.innerWidth - promTimeWidth; promTimeStyle.marginLeft = 0; }
+    if (isPastRightBoundary) { promTimeStyle.left = this.container.offsetWidth - promTimeWidth; promTimeStyle.marginLeft = 0; }
 
     var promPrettyTime = moment(this.props.promLocalTime).utcOffset(1).format('hh:mm:ssa');
 
