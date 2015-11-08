@@ -26,6 +26,7 @@ export default class Mesh extends React.Component {
     super();
 
     this.resize = _.debounce(this.resize, 500).bind(this);
+    this.state  = { opacity: 0 };
   }
 
   componentDidMount() {
@@ -47,6 +48,8 @@ export default class Mesh extends React.Component {
       if (!this.props.simpleMode) {
         this.animate();
       }
+
+      this.setState({ opacity: 1 });
     }, 10);
   }
 
@@ -163,7 +166,7 @@ export default class Mesh extends React.Component {
 
   render() {
     return (
-      <div className={styles.mesh + ' bg-primary'} />
+      <div className={styles.mesh + ' bg-primary'} style={{ opacity: this.state.opacity }}/>
     );
   }
 }

@@ -24,6 +24,12 @@ export default class Body extends React.Component {
 
   state = { hasStarted: false }
 
+  componentDidMount() {
+    setTimeout(() => { this.setState({ headerActive:     true }) }, 1000);
+    setTimeout(() => { this.setState({ tweetGraphActive: true }) }, 1500);
+    setTimeout(() => { this.setState({ introTextActive:  true }) }, 2000);
+  }
+
   start = () => {
     this.setState({ hasStarted: true });
     AppActions.jumpVideoTo(0);
@@ -31,7 +37,8 @@ export default class Body extends React.Component {
 
   render() {
     var headerStyle = {
-      textAlign: this.props.promProgress > 31 ? 'left' : 'right'
+      textAlign: this.props.promProgress > 31 ? 'left' : 'right',
+      opacity:   this.state.headerActive ? 1 : 0
     };
 
     var startButtonStyle = {
@@ -55,15 +62,20 @@ export default class Body extends React.Component {
 
     return (
       <div className={styles.body}>
-        <h1 className={styles.header + ' color-4'} style={headerStyle}>
+        <h1 className={styles.header + ' ' + styles.fade + ' color-4'} style={headerStyle}>
           <span className={styles.headerFade}>#</span>
           IbizaProm
           <span className={styles.headerFade}>Replay</span>
         </h1>
 
-        <TweetGraph {...this.props} active={this.state.hasStarted} />
+        <div className={styles.fade} style={{ opacity: this.state.tweetGraphActive ? 1 : 0}}>
+          <TweetGraph {...this.props} active={this.state.hasStarted}/>
+        </div>
 
-        <div className={styles.intro} style={{ display: this.state.hasStarted == true ? 'none' : 'block' }}>
+        <div className={styles.intro + ' ' + styles.fade} style={{
+          display: this.state.hasStarted == true ? 'none' : 'block',
+          opacity: this.state.introTextActive ? 1 : 0
+        }}>
           <p>On July 29th 2015, for the BBC Proms season, <a href="http://www.bbc.co.uk/radio1" target="_new">Radio 1</a> celebrated their 20 year association with Ibiza by enlisting the <a href="http://www.theheritageorchestra.com/" target="_new">Heritage Orchestra</a> to play over twenty classic club tracks for the station's first night out at the Proms, turning the Royal Albert Hall into one giant nightclub and throwing the poshest rave in London.</p>
           <p>This is an experimental hack to replay the concert, in sync with all the tweets published on that evening. <em>Best viewed on larger screens.</em></p>
           <p>Hit <strong>Play</strong> below to kick it off.</p>
