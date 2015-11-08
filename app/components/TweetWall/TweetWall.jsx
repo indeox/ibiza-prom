@@ -9,7 +9,7 @@ import TimeoutTransitionGroup from 'timeout-transition-group'
 export default class TweetWall extends React.Component {
 
   static defaultProps = {
-  	promStart:    moment('2015-07-29 22:17:00+0100').valueOf(),
+    promStart:    moment('2015-07-29 22:17:00+0100').valueOf(),
     colourScheme: [],
     tweets:       [],
     maxTweets:    10,
@@ -56,7 +56,7 @@ export default class TweetWall extends React.Component {
   render() {
     var self = this;
 
-	  var tweets = this.tweetsToRender.map(function(tweet, index) {
+    var tweets = this.tweetsToRender.map(function(tweet, index) {
       var media;
       var mediaIcon;
       var tweetColour = self.props.colourScheme[tweet.colourIndex];
@@ -77,8 +77,8 @@ export default class TweetWall extends React.Component {
 
       // Render Tweet
       return (
-      	<li className={styles.tweet} key={tweet.id}>
-      		<a target="_blank" href={tweet.url} className={'color-' + tweet.colourIndex}>
+        <li className={styles.tweet} key={tweet.id}>
+          <a target="_blank" href={tweet.url} className={'color-' + tweet.colourIndex}>
             {media}
             <div className={styles.tweetMeta}>
               { /*<img className={styles.userimage} src={tweet.userProfileImageUrl} /> */ }
@@ -90,7 +90,7 @@ export default class TweetWall extends React.Component {
               <span className={styles.username}>@{tweet.userScreenName} ({tweet.userName})</span>
             </div>
           </a>
-      	</li>
+        </li>
       )
     });
 
@@ -102,7 +102,7 @@ export default class TweetWall extends React.Component {
                                enterTimeout={500}
                                leaveTimeout={500}
                                style={{opacity: this.props.lightsOn ? 1 : 0}}>
-      	{tweets}
+        {tweets}
       </TimeoutTransitionGroup>
     );
   }
