@@ -59,7 +59,7 @@ export default class TweetGraph extends React.Component {
     }
 
     var promTimePosition = progress;
-    if      (progress < 4.5)  { promTimePosition = 4.5; }
+    if      (progress < 4.5)  { promTimePosition = 4.0; }
     else if (progress > 95.1) { promTimePosition = 95.1; }
 
     var promTimeStyle = {
