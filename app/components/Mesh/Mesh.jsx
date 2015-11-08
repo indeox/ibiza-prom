@@ -67,11 +67,12 @@ export default class Mesh extends React.Component {
 
   buildScene = () => {
     delete this.scene;
-    this.renderer.setSize(window.innerWidth, window.innerHeight);
+    var docSize = this.getDocSize();
+    this.renderer.setSize(docSize[0], docSize[1]);
 
     this.scene    = new FSS.Scene();
     this.light    = new FSS.Light('#880066', this.props.colour);
-    this.geometry = new FSS.Plane(window.innerWidth + 60, window.innerHeight + 30, 12, 10);
+    this.geometry = new FSS.Plane(docSize[0] + 60, docSize[1] + 30, 12, 10);
     this.material = new FSS.Material('#555555', '#ffffff');
     this.mesh     = new FSS.Mesh(this.geometry, this.material);
     this.now      = Date.now();
@@ -91,8 +92,19 @@ export default class Mesh extends React.Component {
   }
 
   resize = () => {
+    var docSize = this.getDocSize();
     this.buildScene();
-    this.renderer.setSize(window.innerWidth, window.innerHeight);
+    this.renderer.setSize(docSize[0], docSize[1]);
+  }
+
+  getDocSize() {
+    var body = document.body;
+    var html = document.documentElement;
+
+    var width = Math.max(body.scrollWidth, body.offsetWidth, html.clientWidth, html.scrollWidth, html.offsetWidth);
+    var height = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
+
+    return [width, height];
   }
 
   animateLightTo(colour) {
