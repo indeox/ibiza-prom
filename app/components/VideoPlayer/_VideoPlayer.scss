@@ -1,7 +1,18 @@
 .video {
 	// width: 55%;
+  width: 100%;
 }
 
 #player {
   width: 100%;
 }
+
+:global {
+  .vjs-16-9 > div:first-child {
+  	position: static !important;
+  }
+}
+
+// :global {
+//   @import '../../../node_modules/video.js/dist/video-js.min.css';
+// }

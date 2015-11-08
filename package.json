@@ -1,6 +1,6 @@
 {
   "name": "ibiza-prom",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Replay of the BBC Radio1 Ibiza Prom",
   "config": {
     "buildDir": "./build",
@@ -42,7 +42,9 @@
     "superagent": "^1.4.0",
     "timeout-transition-group": "^1.0.3",
     "tinycolor": "0.0.1",
-    "tinycolor2": "^1.1.2"
+    "tinycolor2": "^1.1.2",
+    "video.js": "^5.0.2",
+    "videojs-youtube": "^2.0.0"
   },
   "devDependencies": {
     "autoprefixer-core": "^6.0.1",
