@@ -10,14 +10,14 @@ export default {
     });
   },
 
-  jumpVideoTo(time){
+  jumpVideoTo(time) {
     AppDispatcher.dispatch({
       actionType: 'VIDEO_JUMPTO',
       time: time
     });
   },
 
-  videoReady(time){
+  videoReady(time) {
     AppDispatcher.dispatch({
       actionType: 'VIDEO_READY'
     });

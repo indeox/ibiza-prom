@@ -24,7 +24,6 @@ const promStart = moment('2015-07-29 22:17:00+0100').valueOf();
 function getAppState() {
   return {
     lightsOn:     false,
-    videoReady:   false,
     items:        ItemsStore.getAll(),
     tweets:       TweetsStore.getAll(),
     tweetData:    TweetsStore.getTweetData(),
@@ -43,6 +42,7 @@ export default class App extends React.Component {
 
     // Set prom start/end
     this.setState({
+      videoReady: false,
       promStart: promStart,
       promEnd:   moment(promStart).add(5530, 'seconds').valueOf(),
       track:     { title: '', artist: '' }
@@ -70,7 +70,7 @@ export default class App extends React.Component {
             Perf.printWasted();
           }
         break;
-        case 'VIDEO_READY':     this.setState({ videoReady: true }); break;
+        case 'VIDEO_READY':     this.setState({ videoReady: true });       break;
         case 'COLOUR_UPDATED':  this.setState({ time:    action.colour }); break;
         case 'COLOURS_UPDATED': this.setState({ colours: action.item });   break;
         default:
