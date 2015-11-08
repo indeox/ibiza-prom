@@ -15,7 +15,7 @@ export default class Mesh extends React.Component {
   static defaultProps = {
     colour:         '#BE2761',
     simpleMode:     hasTouch ? true : false,
-    meshUpdateInMs: 100
+    meshUpdateInMs: 60
   };
 
   static propTypes = {
