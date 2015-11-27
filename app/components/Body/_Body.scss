@@ -34,9 +34,12 @@
   color: #ffffff;
   width: 75%;
   margin: 30px auto;
+  line-height: 1.4;
 
   a {
     color: #ffffff;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.5);
   }
 }
 
