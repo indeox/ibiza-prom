@@ -79,7 +79,7 @@ export default class Body extends React.Component {
           opacity: this.state.introTextActive ? 1 : 0
         }}>
           <p>On July 29th 2015, for the BBC Proms season, <a href="http://www.bbc.co.uk/radio1" target="_new">Radio 1</a> celebrated their 20 year association with Ibiza by enlisting the <a href="http://www.theheritageorchestra.com/" target="_new">Heritage Orchestra</a> to play over twenty classic club tracks for the station's first night out at the Proms, turning the Royal Albert Hall into one giant nightclub and throwing the poshest rave in London.</p>
-          <p>This is an experimental hack to replay the concert, in sync with all the tweets published on that evening. <em>Best viewed on larger screens.</em></p>
+          <p>This is an experimental music hack to replay the concert, in sync with all the tweets published on that evening. <em>Best viewed on larger screens.</em></p>
           <p>Hit <strong>Play</strong> below to kick it off.</p>
 
           <button className={styles.startbutton} style={startButtonStyle} onClick={this.start}>
@@ -91,7 +91,7 @@ export default class Body extends React.Component {
           <VideoPlayer/>
 
           <div className={styles.description}>
-            <p><i className="fa fa-info-circle"></i> This is an experimental music hack, synchronising the Radio 1 Ibiza Prom with the live tweets of the night. The project is a proof of concept, made for fun, so there may be bugs. If all fails, you can still enjoy the fantastic gig for what it was. Any comments, fire them at <a href="https://twitter.com/indeox" target="_new" className="color-4">@indeox</a></p>
+            <p><i className="fa fa-info-circle"></i> This is an experimental music hack, synchronising the Radio 1 Ibiza Prom with the live tweets of the night. The project is only a proof of concept, made purely for the fun of it. Any comments, fire them at <a href="https://twitter.com/indeox" target="_new" className="color-4">@indeox</a></p>
           </div>
           {
             /*<h2 className={styles.track} style={trackInfoStyle}>{this.props.track.title}</h2>

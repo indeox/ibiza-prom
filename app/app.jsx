@@ -1,4 +1,3 @@
-import './favicon.ico';
 import './social-image.jpg';
 import './index.html';
 import 'babel-core/polyfill';
