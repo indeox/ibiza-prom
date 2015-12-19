@@ -35,12 +35,17 @@ ul.tweetStats {
   color: #ffffff;
   overflow: hidden;
   margin-bottom: 8px;
+  margin-left: -4px;
 
   li {
     float: left;
     padding: 4px;
     margin: 0 0 0 8px;
     transition: border-color 500ms ease;
+  }
+
+  li:first-child {
+    margin-left: 4px;
   }
 
   li:hover {
