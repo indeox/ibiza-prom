@@ -104,7 +104,7 @@ export default class TweetWall extends React.Component {
         let mediaSrc = tweet.media[0].media_url || '';
 
         // Scale down images
-        mediaSrc = 'http://www.deepcobalt.com/api/ic/x90/' + mediaSrc.replace(/https?:\/\//, '');
+        mediaSrc = 'http://cdn.deepcobalt.com/api/ic/x90/' + mediaSrc.replace(/https?:\/\//, '');
 
         media = (
           <a target="_blank" href={mediaUrl} className={cx('color-' + tweet.colourIndex, styles.media)}>
