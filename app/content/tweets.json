@@ -5691,38 +5691,6 @@
     "userProfileImageUrl": "http://pbs.twimg.com/profile_images/631400122153332736/n2ZqeumU_normal.jpg"
   },
   {
-    "id": "626502240778514433",
-    "url": "https://www.twitter.com/crowdmix/status/626502240778514433",
-    "time": "10:19 PM - 29 Jul 2015",
-    "timestamp": 1438204748000,
-    "text": "Tonight Royal Albert Hall for #PeteTong #Radio1 #radioOne #crowdmix #MusicIsSocial #cm15 #london… https://t.co/82fBSIbehA",
-    "username": "@crowdmix",
-    "lang": "en",
-    "place": null,
-    "geo": null,
-    "hashtags": [
-      "PeteTong",
-      "Radio1",
-      "radioOne",
-      "crowdmix",
-      "MusicIsSocial",
-      "cm15",
-      "london"
-    ],
-    "userName": "CROWDMIX",
-    "userScreenName": "crowdmix",
-    "userProfileImageUrl": "http://pbs.twimg.com/profile_images/648492718868537344/pCYtpO6V_normal.jpg",
-    "expanded_urls": {
-      "https://t.co/82fBSIbehA": "https://instagram.com/p/5vCGTji8Xz/"
-    },
-    "media": [
-      {
-        "expanded_url": "https://instagram.com/p/5vCGTji8Xz/",
-        "type": "photo"
-      }
-    ]
-  },
-  {
     "id": "626502242166800388",
     "url": "https://www.twitter.com/trishclowes/status/626502242166800388",
     "time": "10:19 PM - 29 Jul 2015",
@@ -26692,31 +26660,6 @@
     "userName": "Nicola Quinn",
     "userScreenName": "thenicolaquinn",
     "userProfileImageUrl": "http://pbs.twimg.com/profile_images/645315342512836608/UYXJpEQ8_normal.jpg"
-  },
-  {
-    "id": "626511496076521472",
-    "url": "https://www.twitter.com/paulsw11/status/626511496076521472",
-    "time": "10:55 PM - 29 Jul 2015",
-    "timestamp": 1438206955000,
-    "text": "@bbcproms Ibiza, I’m sold, I admit.Well done. http://t.co/wtKJw29liG",
-    "username": "@paulsw11",
-    "lang": "en",
-    "place": null,
-    "geo": null,
-    "hashtags": [],
-    "media": [
-      {
-        "media_url": "http://pbs.twimg.com/media/CLHQ4t3XAAE3AEY.jpg",
-        "expanded_url": "http://twitter.com/paulsw11/status/626511496076521472/photo/1",
-        "type": "photo"
-      }
-    ],
-    "userName": "Paul C",
-    "userScreenName": "paulsw11",
-    "userProfileImageUrl": "http://pbs.twimg.com/profile_images/635138493069557761/Z-Bxg99Z_normal.jpg",
-    "expanded_urls": {
-      "http://t.co/wtKJw29liG": "http://twitter.com/paulsw11/status/626511496076521472/photo/1"
-    }
   },
   {
     "id": "626511511347961856",
