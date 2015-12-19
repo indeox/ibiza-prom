@@ -43,10 +43,6 @@ ul.tweetStats {
     transition: border-color 500ms ease;
   }
 
-  li:first-child {
-    margin-left: 0;
-  }
-
   li:hover {
     border-bottom: 2px solid rgba(255,255,255,0.5);
     cursor: pointer;
