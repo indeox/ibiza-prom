@@ -36,14 +36,25 @@ class ColoursStore extends BaseStore {
 
     colourHex = colourHex.substr(1);
 
-    this._schemeCache[colourHex] = this._schemeCache[colourHex] || scm.from_hex(colourHex)
-                                                                    .distance(0.1)
-                                                                    .scheme('triade')
-                                                                    .variation('light')
-                                                                    .colors()
-                                                                    .map(function(colourHex) {
-                                                                      return '#' + colourHex
-                                                                    });
+    try {
+      this._schemeCache[colourHex] = this._schemeCache[colourHex]
+        || scm.from_hex(colourHex)
+              .distance(0.1)
+              .scheme('triade')
+              .variation('light')
+              .colors()
+              .map(function(colourHex) {
+                return '#' + colourHex
+              });
+
+    } catch(e) {
+      // console.log('BAILING ON', colourHex);
+      this._schemeCache[colourHex] = this.lastSuccessfulScheme;
+    }
+
+    // Due to ColorScheme sometimes barfing at some colours (ie: 9F8999),
+    // keep a fallback colourscheme for when that happens
+    this.lastSuccessfulScheme = this._schemeCache[colourHex];
 
     return this._schemeCache[colourHex];
   }

@@ -112,12 +112,14 @@ export default class App extends React.Component {
       .bg-2           { background-color: ${this.state.colourScheme[2]}; }
       .bg-3           { background-color: ${this.state.colourScheme[3]}; }
       .bg-4           { background-color: ${this.state.colourScheme[4]}; }
+      .bg-5           { background-color: ${this.state.colourScheme[5]}; }
       .border-primary { border-color: ${this.state.primaryColour};   }
       .border-0       { border-color: ${this.state.colourScheme[0]}; }
       .border-1       { border-color: ${this.state.colourScheme[1]}; }
       .border-2       { border-color: ${this.state.colourScheme[2]}; }
       .border-3       { border-color: ${this.state.colourScheme[3]}; }
       .border-4       { border-color: ${this.state.colourScheme[4]}; }
+      .border-5       { border-color: ${this.state.colourScheme[5]}; }
     `;
 
     return (
