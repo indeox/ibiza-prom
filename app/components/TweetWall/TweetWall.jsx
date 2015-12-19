@@ -167,14 +167,14 @@ export default class TweetWall extends React.Component {
         {/* Photo Tweets */}
         <li onClick={this.filterBy.bind(this, 'photo')}
             className={cx({[`${activeFilterCls}`]: this.state.activeFilterType == 'photo'}, 'border-5')}>
-              { tweetStats.photo || 0 } photos
+              { tweetStats.photo || 0 } { tweetStats.photo == 1 ? 'photo' : 'photos' }
         </li>
 
         {/* Video Tweets */}
         <li onClick={this.filterBy.bind(this, 'video')}
             className={cx({[`${activeFilterCls}`]: this.state.activeFilterType == 'video'}, 'border-5')}
             style={{opacity: tweetStats.video ? 1 : 0.5}}>
-              { tweetStats.video || 0 } videos
+              { tweetStats.video || 0 } { tweetStats.video == 1 ? 'video' : 'videos' }
         </li>
       </ul>
     );
