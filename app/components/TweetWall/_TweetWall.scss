@@ -1,14 +1,18 @@
 @import "toolkit";
 
-.tweets {
+.tweetWall {
   will-change: transform;
   font-family: Montserrat, sans-serif;
   font-size: 10px;
-  list-style: none;
-  margin: 0;
   padding: 8px;
   opacity: 0.01;
   transition: opacity 500ms ease;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
 
   a {
     text-decoration: none;
@@ -20,12 +24,40 @@
     float: right;
     padding: 0 8px 0 0;
   }
+}
+
+.tweets {
 
 }
 
-.tweetMeta {
+ul.tweetStats {
+  background: rgba(0,0,0,0.3);
+  color: #ffffff;
+  overflow: hidden;
+  margin-bottom: 8px;
 
+  li {
+    float: left;
+    padding: 4px;
+    margin: 0 0 0 8px;
+    transition: border-color 500ms ease;
+  }
+
+  li:first-child {
+    margin-left: 0;
+  }
+
+  li:hover {
+    border-bottom: 2px solid rgba(255,255,255,0.5);
+    cursor: pointer;
+  }
 }
+
+.tweetStatsActive {
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+}
+
 
 .username {
   opacity: 0.5;
@@ -44,6 +76,10 @@
 
 .tweet {
   overflow: hidden;
+}
+
+.tweetNoBody {
+  float: left;
 }
 
 .tweets li {
