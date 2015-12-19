@@ -31,8 +31,10 @@ export default class Body extends React.Component {
   }
 
   start = () => {
-    this.setState({ hasStarted: true });
-    AppActions.jumpVideoTo(0);
+    if (this.props.videoReady) {
+      this.setState({ hasStarted: true });
+      AppActions.jumpVideoTo(0);
+    }
   }
 
   render() {
