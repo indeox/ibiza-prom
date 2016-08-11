@@ -1,9 +1,7 @@
 import BaseStore from './BaseStore';
 import AppDispatcher from '../dispatcher/AppDispatcher';
 
-// import ColourScheme from 'color-scheme';
 var scm = new ColorScheme;
-// import Please from 'pleasejs';
 
 class ColoursStore extends BaseStore {
 
