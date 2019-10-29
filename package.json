@@ -30,7 +30,7 @@
     "color-scheme": "0.0.5",
     "favicolor": "^1.0.1",
     "flux": "^2.1.1",
-    "lodash": "^3.10.1",
+    "lodash": "^4.17.15",
     "moment": "^2.10.6",
     "normalize.css": "^3.0.3",
     "react": "^0.13.3",
